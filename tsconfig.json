@@ -14,22 +14,48 @@
     "noEmit": true,
     "resolveJsonModule": true,
 
-    // Best practices
-    "strict": true,
-    "skipLibCheck": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
+    // Cloudflare Worker types
+    "types": ["@cloudflare/workers-types/latest", "bun"],
 
-    // Some stricter flags (disabled by default)
+    //
+    // performance
+    //
+    "skipLibCheck": true,
+    //
+    // absolute import paths
+    //
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "~utils/*": [
+        "./node_modules/@adaptive-sm/utils/dist/*"
+      ]
+    },
+    //
+    // https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/#the---erasablesyntaxonly-option
+    //
+    "erasableSyntaxOnly": true,
+    //
+    // code quality settings
+    //
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-
-    // Cloudflare Worker types
-    "types": ["@cloudflare/workers-types/latest", "bun"]
-  }
+    "noImplicitOverride": true,
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    ".wrangler",
+    "dist",
+    "docs",
+    "ops"
+  ]
 }
