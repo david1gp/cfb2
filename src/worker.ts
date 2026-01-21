@@ -1,4 +1,6 @@
-interface Env {
+import { getCorsHeaders } from "@/getCorsHeaders"
+
+export interface Env {
   PUBLIC_BUCKET_BASE_URL: string
   CORS_ALLOW_ORIGIN?: string
   CORS_MAX_AGE?: string
@@ -73,54 +75,4 @@ export default {
       headers: responseHeaders,
     })
   },
-}
-
-function getCorsHeaders(env: Env, request: Request): Headers {
-  const headers = new Headers()
-
-  // Parse CORS allow origins (comma-separated), default to ["*"]
-  const allowOrigins = parseAllowedOrigins(env.CORS_ALLOW_ORIGIN)
-
-  const requestOrigin = getOriginFromRequest(request)
-
-  if (requestOrigin && allowOrigins.includes(requestOrigin)) {
-    headers.set("Access-Control-Allow-Origin", requestOrigin)
-  } else if (allowOrigins.includes("*")) {
-    headers.set("Access-Control-Allow-Origin", "*")
-  }
-
-  // Set max age if provided, default to 300 (5 minutes)
-  const maxAge = env.CORS_MAX_AGE || "300"
-  headers.set("Access-Control-Max-Age", maxAge)
-
-  headers.set("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS")
-  headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization, If-Modified-Since")
-
-  return headers
-}
-
-function parseAllowedOrigins(corsAllowOrigin?: string): string[] {
-  if (!corsAllowOrigin) {
-    return ["*"]
-  }
-  return corsAllowOrigin.includes(", ")
-    ? corsAllowOrigin.split(", ").map((origin) => origin.trim())
-    : [corsAllowOrigin.trim()]
-}
-
-function getOriginFromRequest(req: Request): string | null {
-  const origin = req.headers.get("origin")
-  if (origin) {
-    return origin
-  }
-  const xForwardedHost = req.headers.get("x-forwarded-host")
-  if (xForwardedHost) {
-    const proto = req.headers.get("x-forwarded-proto") || "https"
-    return `${proto}://${xForwardedHost}`
-  }
-  const referer = req.headers.get("referer")
-  if (referer) {
-    return referer
-  }
-  return null
 }
