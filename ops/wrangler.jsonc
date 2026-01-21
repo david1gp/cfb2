@@ -1,0 +1,53 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "cf-b2-worker",
+  "main": "src/worker.ts",
+  "workers_dev": false,
+  "compatibility_date": "2025-11-17",
+  "account_id": "1becbf81dfad47037cda216f3b6f163a",
+  "vars": {
+    "PUBLIC_BUCKET_BASE_URL": "https://dcc-astro-media.s3.eu-central-003.backblazeb2.com",
+    "CORS_ALLOW_ORIGIN": "*",
+    "CORS_MAX_AGE": "300",
+  },
+  "routes": [
+    {
+      "pattern": "storage-astro.leg.tj",
+      "zone_name": "leg.tj",
+      "custom_domain": true,
+    },
+  ],
+  "observability": {
+    "enabled": true,
+  },
+  "env": {
+    "storage": {
+      "vars": {
+        "PUBLIC_BUCKET_BASE_URL": "https://dcc-storage.s3.eu-central-003.backblazeb2.com",
+        "CORS_ALLOW_ORIGIN": "*",
+        "CORS_MAX_AGE": "300",
+      },
+      "routes": [
+        {
+          "pattern": "storage.leg.tj",
+          "zone_name": "leg.tj",
+          "custom_domain": true,
+        },
+      ],
+    },
+    "astro": {
+      "vars": {
+        "PUBLIC_BUCKET_BASE_URL": "https://dcc-astro-media.s3.eu-central-003.backblazeb2.com",
+        "CORS_ALLOW_ORIGIN": "*",
+        "CORS_MAX_AGE": "300",
+      },
+      "routes": [
+        {
+          "pattern": "storage-astro.leg.tj",
+          "zone_name": "leg.tj",
+          "custom_domain": true,
+        },
+      ],
+    },
+  },
+}

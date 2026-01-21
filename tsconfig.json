@@ -50,7 +50,9 @@
     "noImplicitOverride": true,
   },
   "include": [
-    "./src"
+    "./src",
+    "./test",
+    "./tests"
   ],
   "exclude": [
     ".wrangler",
