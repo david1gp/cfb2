@@ -108,7 +108,7 @@ describe("B2 integration tests", () => {
       const listArray = listResult as ListObject[]
       const uploadedObject = listArray.find((obj) => obj.Key === testKey)
       expect(uploadedObject).toBeDefined()
-      expect(uploadedObject?.Size).toBe(testContent.length)
+      expect(uploadedObject?.Size as unknown as string).toBe(testContent.length.toString())
 
       const downloadResult = await s3.getObject(testKey)
       expect(downloadResult).not.toBeNull()
