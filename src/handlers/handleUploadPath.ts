@@ -1,4 +1,4 @@
-import { getApiUrlFromEndpoint, getB2UploadUrl } from "@/b2/getB2UploadUrl"
+import { getApiUrlFromEndpoint, getB2UploadUrl } from "@/handlers/getB2UploadUrl"
 import type { Env } from "@/types"
 import { uploadPathQuerySchema, uploadPathResponseSchema } from "@/validators"
 import { safeParse } from "valibot"
