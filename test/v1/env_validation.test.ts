@@ -40,6 +40,7 @@ describe.skip("env validation", () => {
       UPLOAD_URL_EXPIRATION_MS: process.env.UPLOAD_URL_EXPIRATION_MS || "86400000",
       HEADER_CACHE_CONTROL: process.env.HEADER_CACHE_CONTROL || "",
       TOKEN_SECRET: process.env.TOKEN_SECRET || "",
+      KV: {} as unknown as KVNamespace,
     }
 
     expect(env.B2_ACCOUNT).toBeDefined()

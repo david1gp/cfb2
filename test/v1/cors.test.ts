@@ -37,6 +37,7 @@ describe.skip("CORS headers", () => {
       UPLOAD_URL_EXPIRATION_MS: "86400000",
       HEADER_CACHE_CONTROL: "public, max-age=86400, stale-while-revalidate=259200, immutable",
       TOKEN_SECRET: process.env.TOKEN_SECRET || "",
+      KV: {} as unknown as KVNamespace,
     }
   })
 
