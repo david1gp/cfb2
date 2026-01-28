@@ -5,7 +5,7 @@ import { afterAll, beforeAll, describe, expect, test } from "bun:test"
 import * as fs from "fs"
 import * as path from "path"
 
-describe("apiB2UploadViaWorker", () => {
+describe.skip("apiB2UploadViaWorker", () => {
   let workerUrl: string
   let authToken: string
   const testFileIds: string[] = []

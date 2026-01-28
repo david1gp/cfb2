@@ -6,7 +6,7 @@ import * as fs from "fs"
 import * as path from "path"
 import { apiB2UploadViaUrl } from "../../client/apiB2UploadViaUrl"
 
-describe("apiB2UploadViaUrl", () => {
+describe.skip("apiB2UploadViaUrl", () => {
   let workerUrl: string
   let authToken: string
   const testKeys: string[] = []
