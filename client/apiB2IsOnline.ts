@@ -1,7 +1,7 @@
 import { apiBaseB2 } from "@client/apiBaseB2"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 
-export const apiPathIsOnline = "/is-online"
+export const apiPathIsOnline = "/health"
 
 export async function apiB2IsOnline(baseUrl: string): PromiseResult<boolean> {
   const op = "apiB2IsOnline"
