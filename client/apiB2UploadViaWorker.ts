@@ -1,4 +1,5 @@
 import { apiBaseB2 } from "@client/apiBaseB2"
+import type { B2ApiUploadFileProps } from "@client/B2ApiUploadFileProps"
 import * as a from "valibot"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
@@ -8,29 +9,18 @@ export const apiPathUploadFile = "/upload"
 
 export const uploadHeaderFields = {
   authorization: "Authorization",
-  fileId: "File-Id",
-  resourceId: "Resource-Id",
   displayName: "Display-Name",
   fileSize: "File-Size",
   contentType: "Content-Type",
-  imageWidth: "Image-Width",
-  imageHeight: "Image-Height",
   sha1: "SHA-1",
 } as const
 
-export interface B2UploadProps {
-  displayName: string
-  fileSize: number
-  mimeType: string
-  fileId: string
-  sha1: string
-}
 
 const b2UploadResultJsonSchema = a.pipe(a.string(), a.parseJson(), b2UploadResultSchema)
 
 export async function apiB2UploadViaWorker(
   token: string,
-  p: B2UploadProps,
+  p: B2ApiUploadFileProps,
   file: any,
   baseUrl: string,
 ): PromiseResult<B2UploadResult> {
@@ -42,9 +32,8 @@ export async function apiB2UploadViaWorker(
 
   const headers: Record<string, string> = {
     [uploadHeaderFields.authorization]: token,
-    [uploadHeaderFields.fileId]: p.fileId,
-    [uploadHeaderFields.displayName]: p.displayName,
-    [uploadHeaderFields.fileSize]: p.fileSize.toString(),
+    [uploadHeaderFields.displayName]: p.fullFileName,
+    [uploadHeaderFields.fileSize]: p.contentLength.toString(),
     [uploadHeaderFields.contentType]: p.mimeType,
     [uploadHeaderFields.sha1]: p.sha1,
   }

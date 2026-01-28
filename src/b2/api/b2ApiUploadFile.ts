@@ -1,4 +1,5 @@
 import type { B2UrlModel } from "@/b2/model/B2UrlModel"
+import type { B2ApiUploadFileProps } from "@client/B2ApiUploadFileProps"
 import * as a from "valibot"
 import { createResult, createResultError, type PromiseResult } from "~utils/result/Result"
 
@@ -6,20 +7,13 @@ export type B2UploadFileType = a.InferOutput<typeof b2UploadFileSchema>
 
 export const b2UploadFileSchema = a.object({
   fileId: a.string(),
-  bucketId: a.string(),
-  accountId: a.string(),
-  action: a.string(),
+  // bucketId: a.string(),
+  // accountId: a.string(),
+  // action: a.string(),
   uploadTimestamp: a.number(),
 })
 
 const log = true
-
-export type B2ApiUpload2Props = {
-  fullFileName: string
-  mimeType: string
-  contentLength: string
-  sha1: string
-}
 
 /**
  * tutorial - https://www.backblaze.com/docs/cloud-storage-upload-files-with-the-native-api
@@ -27,7 +21,7 @@ export type B2ApiUpload2Props = {
  */
 export async function b2ApiUploadFile(
   uploadUrlData: B2UrlModel,
-  info: B2ApiUpload2Props,
+  info: B2ApiUploadFileProps,
   body: any,
 ): PromiseResult<B2UploadFileType> {
   const op = "b2UploadFile"
