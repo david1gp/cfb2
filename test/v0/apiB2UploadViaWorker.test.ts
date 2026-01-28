@@ -30,7 +30,7 @@ describe("apiB2UploadViaWorker v0", async () => {
       new Blob([testContent]),
       workerUrl,
     )
-
+    if (!result.success) console.log(result)
     expect(result.success).toBe(true)
     if (!result.success) {
       expect(result.errorMessage).toBeDefined()
@@ -54,7 +54,7 @@ describe("apiB2UploadViaWorker v0", async () => {
       testContent,
       workerUrl,
     )
-
+    if (!result.success) console.log(result)
     expect(result.success).toBe(false)
   })
 
@@ -73,7 +73,7 @@ describe("apiB2UploadViaWorker v0", async () => {
       new Blob([testContent]),
       workerUrl,
     )
-
+    if (!result.success) console.log(result)
     expect(result.success).toBe(true)
   })
 })

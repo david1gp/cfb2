@@ -15,7 +15,7 @@ describe("apiB2GetUploadUrl v0", async () => {
 
   test("connects to v0 worker endpoint", async () => {
     const result = await apiB2GetUploadUrl(workerUrl, authToken)
-
+    if (!result.success) console.log(result)
     expect(result.success).toBe(true)
     if (!result.success) {
       expect(result.errorMessage).toBeDefined()
@@ -27,13 +27,13 @@ describe("apiB2GetUploadUrl v0", async () => {
 
   test("handles invalid token request", async () => {
     const result = await apiB2GetUploadUrl(workerUrl, "invalid-token")
-
+    if (!result.success) console.log(result)
     expect(result.success).toBe(false)
   })
 
   test("handles request with missing auth header", async () => {
     const result = await apiB2GetUploadUrl(workerUrl, "")
-
+    if (!result.success) console.log(result)
     expect(result.success).toBe(false)
   })
 })
