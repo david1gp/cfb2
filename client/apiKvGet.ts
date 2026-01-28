@@ -22,7 +22,7 @@ export async function apiKvGet(baseUrl: string, key: string, token: string): Pro
   const response = await fetch(url.toString(), {
     method: "GET",
     headers: {
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
   })
 

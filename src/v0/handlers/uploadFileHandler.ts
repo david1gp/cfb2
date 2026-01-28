@@ -5,13 +5,17 @@ import { uploadHeaderFields } from "@client/apiB2UploadViaWorker"
 import { createResultError } from "~utils/result/Result"
 
 export async function uploadFileHandler(request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
-  const authHeader = request.headers.get(uploadHeaderFields.authorization)
+  let authHeader = request.headers.get(uploadHeaderFields.authorization)
   if (!authHeader) {
     const error = createResultError("uploadFileHandler", "Missing Authorization header")
     return new Response(JSON.stringify(error), {
       status: 401,
       headers: { "Content-Type": "application/json" },
     })
+  }
+
+  if (authHeader.startsWith("Bearer ")) {
+    authHeader = authHeader.slice(7)
   }
 
   const saltResult = envTokenSecretResult(_env as unknown as Record<string, string>)

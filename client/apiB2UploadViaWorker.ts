@@ -31,7 +31,7 @@ export async function apiB2UploadViaWorker(
   }
 
   const headers: Record<string, string> = {
-    [uploadHeaderFields.authorization]: token,
+    [uploadHeaderFields.authorization]: `Bearer ${token}`,
     [uploadHeaderFields.displayName]: p.fullFileName,
     [uploadHeaderFields.fileSize]: p.contentLength.toString(),
     [uploadHeaderFields.contentType]: p.mimeType,

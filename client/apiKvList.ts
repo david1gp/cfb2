@@ -28,7 +28,7 @@ export async function apiKvList(
   const response = await fetch(url.toString(), {
     method: "GET",
     headers: {
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
   })
 

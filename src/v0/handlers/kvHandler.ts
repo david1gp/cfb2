@@ -6,7 +6,7 @@ import { createResultError } from "~utils/result/Result"
 const KV_DEFAULT_EXPIRATION_SECONDS = 86400
 
 async function validateToken(request: Request, env: Env, handlerName: string): Promise<{ valid: boolean; error?: Response }> {
-  const authHeader = request.headers.get("Authorization")
+  let authHeader = request.headers.get("Authorization")
   if (!authHeader) {
     const error = createResultError(handlerName, "Missing Authorization header")
     return {
@@ -16,6 +16,10 @@ async function validateToken(request: Request, env: Env, handlerName: string): P
         headers: { "Content-Type": "application/json" },
       }),
     }
+  }
+
+  if (authHeader.startsWith("Bearer ")) {
+    authHeader = authHeader.slice(7)
   }
 
   const saltResult = envTokenSecretResult(env as unknown as Record<string, string | undefined>)

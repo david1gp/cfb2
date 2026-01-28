@@ -21,7 +21,7 @@ export async function apiKvDelete(baseUrl: string, key: string, token: string): 
   const response = await fetch(url.toString(), {
     method: "DELETE",
     headers: {
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
   })
 

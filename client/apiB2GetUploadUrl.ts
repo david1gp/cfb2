@@ -22,7 +22,7 @@ export async function apiB2GetUploadUrl(baseUrl: string, token: string): Promise
   const response = await fetch(url.toString(), {
     method: "GET",
     headers: {
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     },
   })
 

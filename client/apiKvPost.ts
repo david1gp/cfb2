@@ -25,7 +25,7 @@ export async function apiKvPost(
   const url = new URL(apiBaseB2 + apiPathKv + "/" + encodeURIComponent(key), baseUrl)
 
   const headers: Record<string, string> = {
-    Authorization: token,
+    Authorization: `Bearer ${token}`,
   }
 
   if (expirationSeconds !== undefined) {
