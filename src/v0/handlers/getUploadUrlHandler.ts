@@ -1,17 +1,26 @@
 import type { Env } from "@/env/Env"
+import { verifyTokenResult } from "@/auth/jwt_token/verifyTokenResult"
 
 export async function getUploadUrlHandler(request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
-  const url = new URL(request.url)
-  const key = url.searchParams.get("key") || "test-key.txt"
-  const contentType = url.searchParams.get("contentType") || "text/plain"
-  const sha1 = url.searchParams.get("sha1") || "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  const authHeader = request.headers.get("Authorization")
+  if (!authHeader) {
+    return new Response(JSON.stringify({ error: "Missing Authorization header" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    })
+  }
+
+  const tokenResult = await verifyTokenResult(authHeader)
+  if (!tokenResult.success) {
+    return new Response(JSON.stringify({ error: "Invalid token" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 
   const responseData = {
-    uploadUrl: "https://upload.example.com/" + key,
+    uploadUrl: "https://upload.example.com/" + Date.now(),
     authorizationToken: "test-token-" + Date.now(),
-    key: key,
-    contentType: contentType,
-    sha1: sha1,
   }
   return new Response(JSON.stringify(responseData), {
     status: 200,

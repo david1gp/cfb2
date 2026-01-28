@@ -1,18 +1,22 @@
 import type { Env } from "@/env/Env"
+import { getCacheControlHeader } from "@/headers/getCacheControlHeader"
+import { apiPathDownloadFile } from "@client/apiB2DownloadFile"
+import { apiBaseB2 } from "@client/apiBaseB2"
 
-export async function downloadHandler(request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
+export async function downloadHandler(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url)
-  const key = url.searchParams.get("key") || "test-key.txt"
-  const responseData = {
-    success: true,
-    key: key,
-    size: 1234,
-    contentType: "text/plain",
-  }
-  return new Response(JSON.stringify(responseData), {
+  const pathname = url.pathname
+  const downloadPrefix = apiBaseB2 + apiPathDownloadFile + "/"
+  const fullFileName = pathname.startsWith(downloadPrefix)
+    ? pathname.slice(downloadPrefix.length - 1).slice(1)
+    : "test-file.txt"
+
+  return new Response("dummy file content for: " + fullFileName, {
     status: 200,
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "text/plain",
+      "Content-Disposition": `attachment; filename="${fullFileName}"`,
+      "Cache-Control": getCacheControlHeader(env),
     },
   })
 }

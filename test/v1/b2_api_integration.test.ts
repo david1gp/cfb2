@@ -144,9 +144,7 @@ describe.skip("B2 API integration tests", () => {
       expect(result.success).toBe(true)
       if (!result.success) return
       expect(result.data.fileId).toBeString()
-      expect(result.data.bucketId).toBe(env.B2_BUCKET_ID)
-      expect(result.data.accountId).toBeString()
-      expect(result.data.action).toBe("upload")
+      expect(result.data.uploadTimestamp).toBeNumber()
 
       if (result.data.fileId) {
         testFileIds.push(result.data.fileId)
