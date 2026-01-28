@@ -1,6 +1,6 @@
-import { type Env } from "@/types"
-import { parseAllowedOrigins } from "./parseAllowedOrigins"
+import { type Env } from "@/env/Env"
 import { getOriginFromRequest } from "./getOriginFromRequest"
+import { parseAllowedOrigins } from "./parseAllowedOrigins"
 
 export function getCorsHeaders(env: Env, request: Request): Headers {
   const headers = new Headers()

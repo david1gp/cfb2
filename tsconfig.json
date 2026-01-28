@@ -28,6 +28,9 @@
       "@/*": [
         "./src/*"
       ],
+      "@client/*": [
+        "./client/*"
+      ],
       "~utils/*": [
         "./node_modules/@adaptive-sm/utils/dist/*"
       ]
@@ -51,7 +54,7 @@
   },
   "include": [
     "./src",
-    "./lib",
+    "./client",
     "./test"
   ],
   "exclude": [
