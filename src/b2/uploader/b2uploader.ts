@@ -18,7 +18,7 @@ export async function b2Uploader(keyId: string, applicationKey: string): Promise
   // Initial auth and upload URL
   let auth: B2AuthModel
   let uploadUrlData: B2UrlModel
-  let lastRefreshTime = performance.now()
+  let lastRefreshTime = Date.now()
 
   // Function to refresh auth and upload URL
   const refreshAuthAndUrl = async (): PromiseResult<void> => {
@@ -30,7 +30,7 @@ export async function b2Uploader(keyId: string, applicationKey: string): Promise
     if (!uploadUrlResult.success) return uploadUrlResult
     uploadUrlData = uploadUrlResult.data
 
-    lastRefreshTime = performance.now()
+    lastRefreshTime = Date.now()
     return createResult(undefined)
   }
 
@@ -39,7 +39,7 @@ export async function b2Uploader(keyId: string, applicationKey: string): Promise
   if (!initialRefreshResult.success) return initialRefreshResult
 
   return createResult(async function upload(props: B2ApiUploadContentProps, body: any) {
-    const now = performance.now()
+    const now = Date.now()
     const timeDiffHours = (now - lastRefreshTime) / (1000 * 60 * 60) // Convert to hours
 
     // Check if 23 hours or more have passed

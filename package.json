@@ -1,5 +1,6 @@
 {
   "name": "@adaptive-sm/cf-b2",
+  "version": "0.1.0",
   "scripts": {
     "dev:v0": "wrangler dev --config ./wrangler.v0.jsonc",
     "dev:v1": "wrangler dev --config ./wrangler.v1.jsonc",

@@ -53,8 +53,9 @@
     "noImplicitOverride": true,
   },
   "include": [
-    "./src",
     "./client",
+    "./ops",
+    "./src",
     "./test"
   ],
   "exclude": [

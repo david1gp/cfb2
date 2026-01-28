@@ -2,12 +2,11 @@ import { verifyToken } from "@/auth/jwt_token/verifyToken"
 import type { Env } from "@/env/Env"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import { createResultError } from "~utils/result/Result"
+import { apiBaseB2 } from "@client/apiBaseB2"
+import { apiPathKv } from "@client/apiKvGet"
+import { apiPathKvList } from "@client/apiKvList"
 
-async function validateToken(
-  request: Request,
-  env: Env,
-  handlerName: string,
-): Promise<{ valid: boolean; error?: Response }> {
+async function validateToken(request: Request, env: Env, handlerName: string): Promise<{ valid: boolean; error?: Response }> {
   let authHeader = request.headers.get("Authorization")
   if (!authHeader) {
     const error = createResultError(handlerName, "Missing Authorization header")
@@ -168,7 +167,3 @@ export async function kvHandler(request: Request, env: Env, ctx: ExecutionContex
     headers: { "Content-Type": "application/json" },
   })
 }
-
-import { apiBaseB2 } from "@client/apiBaseB2"
-import { apiPathKv } from "@client/apiKvGet"
-import { apiPathKvList } from "@client/apiKvList"
