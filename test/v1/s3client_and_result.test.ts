@@ -30,6 +30,7 @@ describe.skip("S3 client", () => {
 
   beforeEach(() => {
     env = {
+      VERSION: "0.1.0",
       ENV_NAME: "test",
       B2_BUCKET_PUBLIC_BASE_URL: "https://peer-astro-media.s3.eu-central-003.backblazeb2.com",
       B2_ACCOUNT: process.env.B2_ACCOUNT || "",

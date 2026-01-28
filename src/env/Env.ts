@@ -1,4 +1,5 @@
 export interface Env {
+  VERSION: string
   ENV_NAME: string
   B2_ACCOUNT: string
   B2_KEY: string

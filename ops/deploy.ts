@@ -1,5 +1,6 @@
 #!/usr/bin/env bun
 
+import { packageVersion } from "../src/env/packageVersion"
 import { getEnvTargets } from "./getEnvTargets"
 
 // Run the function if script is executed directly
@@ -17,15 +18,19 @@ async function deployAllEnvironments() {
   }
 
   console.log(`Found environments: ${environments.join(", ")}`)
+  console.log(`Deploying version: ${packageVersion}`)
   console.log("")
 
   for (const env of environments) {
     console.log(`Deploying environment: ${env}`)
 
-    const process = Bun.spawn(["bun", "run", "wrangler", "deploy", "--env", env], {
-      stdout: "inherit",
-      stderr: "inherit",
-    })
+    const process = Bun.spawn(
+      ["bun", "run", "wrangler", "deploy", "--env", env, "--var", `VERSION:${packageVersion}`],
+      {
+        stdout: "inherit",
+        stderr: "inherit",
+      },
+    )
 
     const exitCode = await process.exited
     if (exitCode === 0) {

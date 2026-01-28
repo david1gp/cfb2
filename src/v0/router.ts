@@ -12,6 +12,7 @@ import { uploadFileHandler } from "./handlers/uploadFileHandler"
 import { isOnlineHandler } from "./handlers_technical/isOnlineHandler"
 import { notAllowedHandler } from "./handlers_technical/notAllowedHandler"
 import { rootHandler } from "./handlers_technical/rootHandler"
+import { versionHandler } from "./handlers_technical/versionHandler"
 
 export type RouteHandlerFn = (request: Request, env: Env, ctx: ExecutionContext) => Promise<Response>
 
@@ -40,6 +41,7 @@ export async function route(
 
 export const getRoutes: Record<string, RouteHandlerFn> = {
   "/": rootHandler,
+  "/version": versionHandler,
   [apiBaseB2 + apiPathGetUploadUrl]: getUploadUrlHandler,
   [apiBaseB2 + apiPathIsOnline]: isOnlineHandler,
   [apiBaseB2 + apiPathKvList]: kvHandler,

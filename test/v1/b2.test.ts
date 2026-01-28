@@ -32,6 +32,7 @@ describe.skip("B2 integration tests", () => {
     }
 
     env = {
+      VERSION: "0.1.0",
       ENV_NAME: "test",
       B2_ACCOUNT: process.env.B2_ACCOUNT || "",
       B2_KEY: process.env.B2_KEY || "",
