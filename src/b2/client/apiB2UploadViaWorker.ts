@@ -38,10 +38,7 @@ export interface B2UploadProps {
   sha1: string
 }
 
-/**
- * {@link import("@/b2/convex/uploadFileRequestHandler.ts")}
- */
-export async function apiB2Upload(
+export async function apiB2UploadViaWorker(
   token: string,
   p: B2UploadProps,
   file: any,
