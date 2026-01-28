@@ -6,25 +6,25 @@
   "compatibility_date": "2025-11-17",
   // Replace with your Cloudflare account ID
   "account_id": "your-account-id-here",
-  
+
   // Default configuration (can be used as a fallback)
   "vars": {
-    "PUBLIC_BUCKET_BASE_URL": "https://your-default-bucket.s3.region.backblazeb2.com",
+    "B2_BUCKET_PUBLIC_BASE_URL": "https://your-default-bucket.s3.region.backblazeb2.com",
     "CORS_ALLOW_ORIGIN": "*",
     "CORS_MAX_AGE": "300"
   },
-  
+
   // Enable observability for debugging and monitoring
   "observability": {
     "enabled": true
   },
-  
+
   // Environment-specific configurations for different projects
   "env": {
     // Production environment - optimized for media and static assets
     "production": {
       "vars": {
-        "PUBLIC_BUCKET_BASE_URL": "https://your-production-bucket.s3.region.backblazeb2.com",
+        "B2_BUCKET_PUBLIC_BASE_URL": "https://your-production-bucket.s3.region.backblazeb2.com",
         "CORS_ALLOW_ORIGIN": "https://yourdomain.com, https://www.yourdomain.com",
         "CORS_MAX_AGE": "86400"
       },
@@ -36,11 +36,11 @@
         }
       ]
     },
-    
+
     // Development environment - relaxed settings for testing
     "dev": {
       "vars": {
-        "PUBLIC_BUCKET_BASE_URL": "https://your-dev-bucket.s3.region.backblazeb2.com",
+        "B2_BUCKET_PUBLIC_BASE_URL": "https://your-dev-bucket.s3.region.backblazeb2.com",
         "CORS_ALLOW_ORIGIN": "*",
         "CORS_MAX_AGE": "0"
       },

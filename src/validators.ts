@@ -1,4 +1,4 @@
-import { object, string, optional, pipe, parseJson, type BaseSchema } from "valibot"
+import { object, string } from "valibot"
 
 export const uploadPathQuerySchema = object({
   key: string(),

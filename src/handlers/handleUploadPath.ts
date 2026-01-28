@@ -25,7 +25,7 @@ export async function handleUploadPath(request: Request, env: Env): Promise<Resp
   }
 
   try {
-    const apiUrl = getApiUrlFromEndpoint(env.PEER_ENDPOINT)
+    const apiUrl = getApiUrlFromEndpoint(env.B2_ENDPOINT)
     const authHeader = request.headers.get("Authorization")
 
     if (!authHeader || !authHeader.startsWith("Basic ")) {

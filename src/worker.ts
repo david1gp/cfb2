@@ -1,6 +1,6 @@
+import { handleDownload } from "@/handlers/handleDownload"
 import { handleUpload } from "@/handlers/handleUpload"
 import { handleUploadPath } from "@/handlers/handleUploadPath"
-import { handleDownload } from "@/handlers/handleDownload"
 import { getCorsHeaders } from "@/headers/getCorsHeaders"
 import type { Env } from "@/types"
 
@@ -24,8 +24,8 @@ export default {
       })
     }
 
-    if (!env.PUBLIC_BUCKET_BASE_URL) {
-      return new Response("PUBLIC_BUCKET_BASE_URL environment variable is not configured", {
+    if (!env.B2_BUCKET_PUBLIC_BASE_URL) {
+      return new Response("B2_BUCKET_PUBLIC_BASE_URL environment variable is not configured", {
         status: 500,
         headers: { "Content-Type": "text/plain" },
       })

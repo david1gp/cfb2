@@ -30,14 +30,13 @@ describe("S3 client", () => {
 
   beforeEach(() => {
     env = {
-      PUBLIC_BUCKET_BASE_URL: "https://peer-astro-media.s3.eu-central-003.backblazeb2.com",
-      PEER_ACCOUNT: process.env.PEER_ACCOUNT || "",
-      PEER_KEY: process.env.PEER_KEY || "",
-      PEER_BUCKET_ID: process.env.PEER_BUCKET_ID || "",
-      PEER_BUCKET_NAME: process.env.PEER_BUCKET_NAME || "",
-      PEER_ENDPOINT: process.env.PEER_ENDPOINT || "https://s3.eu-central-003.backblazeb2.com",
+      B2_BUCKET_PUBLIC_BASE_URL: "https://peer-astro-media.s3.eu-central-003.backblazeb2.com",
+      B2_ACCOUNT: process.env.B2_ACCOUNT || "",
+      B2_KEY: process.env.B2_KEY || "",
+      B2_BUCKET_ID: process.env.B2_BUCKET_ID || "",
+      B2_BUCKET_NAME: process.env.B2_BUCKET_NAME || "",
+      B2_ENDPOINT: process.env.B2_ENDPOINT || "https://s3.eu-central-003.backblazeb2.com",
       UPLOAD_URL_EXPIRATION_MS: "86400000",
-      UPLOAD_MAX_FILE_SIZE_MB: "",
       HEADER_CACHE_CONTROL: "public, max-age=86400, stale-while-revalidate=259200, immutable",
     }
   })
@@ -58,11 +57,11 @@ describe("S3 client", () => {
 
   test("getS3Endpoint returns endpoint from env", () => {
     const endpoint = getS3Endpoint(env)
-    expect(endpoint).toBe(env.PEER_ENDPOINT)
+    expect(endpoint).toBe(env.B2_ENDPOINT)
   })
 
   test("getS3Endpoint handles empty endpoint", () => {
-    const envWithoutEndpoint: Env = { ...env, PEER_ENDPOINT: "" }
+    const envWithoutEndpoint: Env = { ...env, B2_ENDPOINT: "" }
     const endpoint = getS3Endpoint(envWithoutEndpoint)
     expect(endpoint).toBe("")
   })

@@ -17,11 +17,11 @@ function generateTestKey(prefix: string): string {
 
 describe("B2 API integration tests", () => {
   let env: {
-    PEER_ACCOUNT: string
-    PEER_KEY: string
-    PEER_BUCKET_ID: string
-    PEER_BUCKET_NAME: string
-    PEER_ENDPOINT: string
+    B2_ACCOUNT: string
+    B2_KEY: string
+    B2_BUCKET_ID: string
+    B2_BUCKET_NAME: string
+    B2_ENDPOINT: string
   }
   let auth: B2AuthModel
   let uploadUrl: B2UrlModel
@@ -44,11 +44,11 @@ describe("B2 API integration tests", () => {
     }
 
     env = {
-      PEER_ACCOUNT: process.env.PEER_ACCOUNT || "",
-      PEER_KEY: process.env.PEER_KEY || "",
-      PEER_BUCKET_ID: process.env.PEER_BUCKET_ID || "",
-      PEER_BUCKET_NAME: process.env.PEER_BUCKET_NAME || "",
-      PEER_ENDPOINT: process.env.PEER_ENDPOINT || "https://s3.eu-central-003.backblazeb2.com",
+      B2_ACCOUNT: process.env.B2_ACCOUNT || "",
+      B2_KEY: process.env.B2_KEY || "",
+      B2_BUCKET_ID: process.env.B2_BUCKET_ID || "",
+      B2_BUCKET_NAME: process.env.B2_BUCKET_NAME || "",
+      B2_ENDPOINT: process.env.B2_ENDPOINT || "https://s3.eu-central-003.backblazeb2.com",
     }
   })
 
@@ -70,13 +70,13 @@ describe("B2 API integration tests", () => {
 
   describe("b2ApiAuthorizeAccount", () => {
     test("authenticates with valid credentials", async () => {
-      const result = await b2ApiAuthorizeAccount(env.PEER_ACCOUNT, env.PEER_KEY)
+      const result = await b2ApiAuthorizeAccount(env.B2_ACCOUNT, env.B2_KEY)
 
       expect(result.success).toBe(true)
       if (!result.success) return
       expect(result.data.apiUrl).toBeString()
       expect(result.data.authorizationToken).toBeString()
-      expect(result.data.bucketId).toBe(env.PEER_BUCKET_ID)
+      expect(result.data.bucketId).toBe(env.B2_BUCKET_ID)
       expect(result.data.createdAt).toBeString()
       expect(result.data.expiresAt).toBeString()
 
@@ -144,7 +144,7 @@ describe("B2 API integration tests", () => {
       expect(result.success).toBe(true)
       if (!result.success) return
       expect(result.data.fileId).toBeString()
-      expect(result.data.bucketId).toBe(env.PEER_BUCKET_ID)
+      expect(result.data.bucketId).toBe(env.B2_BUCKET_ID)
       expect(result.data.accountId).toBeString()
       expect(result.data.action).toBe("upload")
 

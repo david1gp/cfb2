@@ -6,9 +6,9 @@ let s3ClientInstance: S3mini | null = null
 export function getS3Client(env: Env): S3mini {
   if (!s3ClientInstance) {
     s3ClientInstance = new S3mini({
-      accessKeyId: env.PEER_ACCOUNT,
-      secretAccessKey: env.PEER_KEY,
-      endpoint: env.PEER_ENDPOINT,
+      accessKeyId: env.B2_ACCOUNT,
+      secretAccessKey: env.B2_KEY,
+      endpoint: env.B2_ENDPOINT,
       region: "eu-central-003",
     })
   }

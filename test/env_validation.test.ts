@@ -1,7 +1,7 @@
-import { expect, test, describe, beforeAll } from "bun:test"
+import type { Env } from "@/types"
+import { beforeAll, describe, expect, test } from "bun:test"
 import * as fs from "fs"
 import * as path from "path"
-import type { Env } from "@/types"
 
 describe("env validation", () => {
   beforeAll(() => {
@@ -20,8 +20,8 @@ describe("env validation", () => {
     }
   })
 
-  test("PEER_* env variables are loaded and not undefined", () => {
-    const requiredVars = ["PEER_ACCOUNT", "PEER_KEY", "PEER_BUCKET_ID", "PEER_BUCKET_NAME", "PEER_ENDPOINT"]
+  test("B2_* env variables are loaded and not undefined", () => {
+    const requiredVars = ["B2_ACCOUNT", "B2_KEY", "B2_BUCKET_ID", "B2_BUCKET_NAME", "B2_ENDPOINT"]
 
     for (const varName of requiredVars) {
       expect(typeof process.env[varName]).toBe("string")
@@ -31,22 +31,21 @@ describe("env validation", () => {
 
   test("Env interface has all required B2 config properties", () => {
     const env: Env = {
-      PUBLIC_BUCKET_BASE_URL: "https://example.s3.eu-central-003.backblazeb2.com",
-      PEER_ACCOUNT: process.env.PEER_ACCOUNT || "",
-      PEER_KEY: process.env.PEER_KEY || "",
-      PEER_BUCKET_ID: process.env.PEER_BUCKET_ID || "",
-      PEER_BUCKET_NAME: process.env.PEER_BUCKET_NAME || "",
-      PEER_ENDPOINT: process.env.PEER_ENDPOINT || "",
+      B2_BUCKET_PUBLIC_BASE_URL: "https://example.s3.eu-central-003.backblazeb2.com",
+      B2_ACCOUNT: process.env.B2_ACCOUNT || "",
+      B2_KEY: process.env.B2_KEY || "",
+      B2_BUCKET_ID: process.env.B2_BUCKET_ID || "",
+      B2_BUCKET_NAME: process.env.B2_BUCKET_NAME || "",
+      B2_ENDPOINT: process.env.B2_ENDPOINT || "",
       UPLOAD_URL_EXPIRATION_MS: process.env.UPLOAD_URL_EXPIRATION_MS || "86400000",
-      UPLOAD_MAX_FILE_SIZE_MB: process.env.UPLOAD_MAX_FILE_SIZE_MB || "",
       HEADER_CACHE_CONTROL: process.env.HEADER_CACHE_CONTROL || "",
     }
 
-    expect(env.PEER_ACCOUNT).toBeDefined()
-    expect(env.PEER_KEY).toBeDefined()
-    expect(env.PEER_BUCKET_ID).toBeDefined()
-    expect(env.PEER_BUCKET_NAME).toBeDefined()
-    expect(env.PEER_ENDPOINT).toBeDefined()
+    expect(env.B2_ACCOUNT).toBeDefined()
+    expect(env.B2_KEY).toBeDefined()
+    expect(env.B2_BUCKET_ID).toBeDefined()
+    expect(env.B2_BUCKET_NAME).toBeDefined()
+    expect(env.B2_ENDPOINT).toBeDefined()
   })
 
   test(".env.example contains all required env vars", () => {
@@ -54,13 +53,12 @@ describe("env validation", () => {
     const envExampleContent = fs.readFileSync(envExamplePath, "utf-8")
 
     const requiredVars = [
-      "PEER_ACCOUNT",
-      "PEER_KEY",
-      "PEER_BUCKET_ID",
-      "PEER_BUCKET_NAME",
-      "PEER_ENDPOINT",
+      "B2_ACCOUNT",
+      "B2_KEY",
+      "B2_BUCKET_ID",
+      "B2_BUCKET_NAME",
+      "B2_ENDPOINT",
       "UPLOAD_URL_EXPIRATION_MS",
-      "UPLOAD_MAX_FILE_SIZE_MB",
       "HEADER_CACHE_CONTROL",
     ]
 

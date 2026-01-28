@@ -2,5 +2,5 @@ import type { Env } from "@/types"
 
 
 export function getS3Endpoint(env: Env): string {
-  return env.PEER_ENDPOINT
+  return env.B2_ENDPOINT
 }

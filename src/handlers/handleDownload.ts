@@ -5,7 +5,7 @@ export async function handleDownload(request: Request, env: Env): Promise<Respon
   const url = new URL(request.url)
   const pathname = url.pathname
 
-  const b2Url = `${env.PUBLIC_BUCKET_BASE_URL}${pathname}${url.search}`
+  const b2Url = `${env.B2_BUCKET_PUBLIC_BASE_URL}${pathname}${url.search}`
   const headers = new Headers()
   request.headers.forEach((value, key) => {
     if (key.toLowerCase() !== "host") {

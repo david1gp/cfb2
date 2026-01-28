@@ -21,7 +21,7 @@ export async function getB2UploadUrl(
       Authorization: authorizationToken,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ bucketId: env.PEER_BUCKET_ID }),
+    body: JSON.stringify({ bucketId: env.B2_BUCKET_ID }),
   })
 
   const result = await fetchResult<B2UploadUrlResponse>("b2_get_upload_url", b2UploadUrlJsonSchema, response)
