@@ -55,7 +55,8 @@ export async function b2ApiAuthorizeAccount(keyId: string, applicationKey: strin
     return createError(op, parse.output.code, fetched)
   }
 
-  const parsing = a.safeParse(a.pipe(a.string(), a.parseJson(), b2ApiAuthSchema), fetched)
+  const schema = a.pipe(a.string(), a.parseJson(), b2ApiAuthSchema)
+  const parsing = a.safeParse(schema, fetched)
   if (log) console.log(op, "parsed:", parsing)
   if (!parsing.success) {
     return createResultError(op, a.summarize(parsing.issues), fetched)

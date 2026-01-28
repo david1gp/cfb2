@@ -24,13 +24,6 @@ export default {
       })
     }
 
-    if (!env.B2_BUCKET_PUBLIC_BASE_URL) {
-      return new Response("B2_BUCKET_PUBLIC_BASE_URL environment variable is not configured", {
-        status: 500,
-        headers: { "Content-Type": "text/plain" },
-      })
-    }
-
     if (pathname === "/upload" && request.method === "POST") {
       return handleUpload(request, env)
     }

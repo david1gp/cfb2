@@ -2,6 +2,14 @@ import { getCorsHeaders } from "@/headers/getCorsHeaders"
 import type { Env } from "../../env/Env"
 
 export async function handleDownload(request: Request, env: Env): Promise<Response> {
+
+  if (!env.B2_BUCKET_PUBLIC_BASE_URL) {
+    return new Response("B2_BUCKET_PUBLIC_BASE_URL environment variable is not configured", {
+      status: 500,
+      headers: { "Content-Type": "text/plain" },
+    })
+  }
+
   const url = new URL(request.url)
   const pathname = url.pathname
 

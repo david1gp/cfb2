@@ -1,6 +1,7 @@
 import { envB2AccountResult } from "@/env/envB2AccountResult"
 import { envB2BucketPublicBaseUrlResult } from "@/env/envB2BucketPublicBaseUrlResult"
 import { envB2KeyResult } from "@/env/envB2KeyResult"
+import { envEnvNameResult } from "@/env/envEnvNameResult"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import { describe, expect, test } from "bun:test"
 
@@ -19,6 +20,13 @@ describe("envVariable tests", () => {
     const result = envB2KeyResult()
     if (!result.success) console.log(result)
     expect(result.success).toBe(true)
+  })
+  test("envEnvNameResult", () => {
+    const result = envEnvNameResult({ ENV_NAME: "test" })
+    expect(result.success).toBe(true)
+    if (result.success) {
+      expect(result.data).toBe("test")
+    }
   })
   test("envTokenSecretResult", () => {
     const result = envTokenSecretResult()

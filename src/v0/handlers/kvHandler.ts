@@ -3,9 +3,11 @@ import type { Env } from "@/env/Env"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import { createResultError } from "~utils/result/Result"
 
-const KV_DEFAULT_EXPIRATION_SECONDS = 86400
-
-async function validateToken(request: Request, env: Env, handlerName: string): Promise<{ valid: boolean; error?: Response }> {
+async function validateToken(
+  request: Request,
+  env: Env,
+  handlerName: string,
+): Promise<{ valid: boolean; error?: Response }> {
   let authHeader = request.headers.get("Authorization")
   if (!authHeader) {
     const error = createResultError(handlerName, "Missing Authorization header")
@@ -55,7 +57,7 @@ export async function kvListHandler(request: Request, env: Env, _ctx: ExecutionC
   const url = new URL(request.url)
   const prefix = url.searchParams.get("prefix") || undefined
   const listResult = await env.KV.list({ prefix })
-  const keys = listResult.keys.map(k => k.name)
+  const keys = listResult.keys.map((k) => k.name)
 
   return new Response(JSON.stringify(keys), {
     status: 200,
@@ -102,9 +104,8 @@ export async function kvPostHandler(request: Request, env: Env, _ctx: ExecutionC
   }
 
   const expirationSecondsHeader = request.headers.get("X-Expiration-Seconds")
-  const expirationSeconds = expirationSecondsHeader
-    ? Number.parseInt(expirationSecondsHeader, 10)
-    : KV_DEFAULT_EXPIRATION_SECONDS
+  const hours24inSeconds = 60 * 60 * 24
+  const expirationSeconds = expirationSecondsHeader ? Number.parseInt(expirationSecondsHeader, 10) : hours24inSeconds
 
   const body = await request.text()
 

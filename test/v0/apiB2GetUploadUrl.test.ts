@@ -22,7 +22,16 @@ describe("apiB2GetUploadUrl v0", async () => {
       return
     }
     expect(result.data.uploadUrl).toBeString()
+    expect(result.data.uploadUrl).toContain("https://")
     expect(result.data.authorizationToken).toBeString()
+  })
+
+  test("returns valid B2 upload URL format", async () => {
+    const result = await apiB2GetUploadUrl(workerUrl, authToken)
+    expect(result.success).toBe(true)
+    if (!result.success) return
+    expect(result.data.uploadUrl).toMatch(/^https:\/\//)
+    expect(result.data.authorizationToken).toBeDefined()
   })
 
   test("handles invalid token request", async () => {

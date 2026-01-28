@@ -26,6 +26,7 @@ describe.skip("CORS headers", () => {
     getCorsHeaders = corsModule.getCorsHeaders
 
     env = {
+      ENV_NAME: "test",
       B2_BUCKET_PUBLIC_BASE_URL: "https://peer-astro-media.s3.eu-central-003.backblazeb2.com",
       CORS_ALLOW_ORIGIN: "*",
       CORS_MAX_AGE: "300",

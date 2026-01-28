@@ -37,6 +37,31 @@ describe("apiB2UploadViaWorker v0", async () => {
       return
     }
     expect(result.data).toBeDefined()
+    expect(result.data.fileId).toBeString()
+    expect(result.data.uploadTimestamp).toBeNumber()
+  })
+
+  test("returns valid B2 upload response format on success", async () => {
+    const testContent = new TextEncoder().encode("Upload response format test")
+    const sha1 = await calculateSHA1FromUint8Array(testContent)
+    const testDisplayName = "response-format-test.txt"
+
+    const result = await apiB2UploadViaWorker(
+      authToken,
+      {
+        fullFileName: testDisplayName,
+        mimeType: "text/plain",
+        contentLength: testContent.length.toString(),
+        sha1: sha1,
+      },
+      new Blob([testContent]),
+      workerUrl,
+    )
+    expect(result.success).toBe(true)
+    if (!result.success) return
+    expect(result.data.fileId).toBeDefined()
+    expect(typeof result.data.uploadTimestamp).toBe("number")
+    expect(result.data.uploadTimestamp).toBeGreaterThan(0)
   })
 
   test("handles invalid token request", async () => {

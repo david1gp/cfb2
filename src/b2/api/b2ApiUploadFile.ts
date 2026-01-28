@@ -49,7 +49,8 @@ export async function b2ApiUploadFile(
 
   const responseText = await response.text()
   if (log) console.log(op, "uploaded:", responseText)
-  const parsing = a.safeParse(a.pipe(a.string(), a.parseJson(), b2UploadFileSchema), responseText)
+  const schema = a.pipe(a.string(), a.parseJson(), b2UploadFileSchema)
+  const parsing = a.safeParse(schema, responseText)
   if (log) console.log(op, "parsed:", parsing)
 
   if (!parsing.success) {
