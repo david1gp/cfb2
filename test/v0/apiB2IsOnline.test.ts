@@ -1,9 +1,8 @@
 import { apiB2IsOnline } from "@client/apiB2IsOnline"
 import { describe, expect, test } from "bun:test"
+import { workerUrl } from "./workerUrl"
 
 describe("apiB2IsOnline v0", () => {
-  const workerUrl = "http://localhost:8787"
-
   test("returns true when server is online", async () => {
     const result = await apiB2IsOnline(workerUrl)
 

@@ -1,18 +1,30 @@
+import { verifyToken } from "@/auth/jwt_token/verifyToken"
 import type { Env } from "@/env/Env"
-import { verifyTokenResult } from "@/auth/jwt_token/verifyTokenResult"
+import { envTokenSecretResult } from "@/env/envTokenSecretResult"
+import { createResultError } from "~utils/result/Result"
 
 export async function getUploadUrlHandler(request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
   const authHeader = request.headers.get("Authorization")
   if (!authHeader) {
-    return new Response(JSON.stringify({ error: "Missing Authorization header" }), {
+    const error = createResultError("getUploadUrlHandler", "Missing Authorization header")
+    return new Response(JSON.stringify(error), {
       status: 401,
       headers: { "Content-Type": "application/json" },
     })
   }
 
-  const tokenResult = await verifyTokenResult(authHeader)
+  const saltResult = envTokenSecretResult(_env as unknown as Record<string, string>)
+  if (!saltResult.success) {
+    return new Response(JSON.stringify(saltResult), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    })
+  }
+
+  const tokenResult = await verifyToken(authHeader, saltResult.data)
   if (!tokenResult.success) {
-    return new Response(JSON.stringify({ error: "Invalid token" }), {
+    const error = createResultError("getUploadUrlHandler", "Invalid token")
+    return new Response(JSON.stringify(error), {
       status: 401,
       headers: { "Content-Type": "application/json" },
     })

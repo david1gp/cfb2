@@ -7,8 +7,8 @@
     "build": "tsc",
     "build:lib": "tsc -p ./tsconfig.lib.json",
     "deploy": "bun run ops/deploy.ts",
-    "test": "bun test",
-    "test:w": "bun test --watch"
+    "test": "bun test --env-file=.env",
+    "test:w": "bun test --env-file=.env --watch"
   },
   "dependencies": {
     "@adaptive-sm/utils": "link:@adaptive-sm/utils",
