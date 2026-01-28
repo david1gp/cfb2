@@ -1,6 +1,8 @@
 {
   "name": "@adaptive-sm/cf-b2",
   "scripts": {
+    "build": "tsc",
+    "build:lib": "tsc -p ./tsconfig.lib.json",
     "deploy": "bun run ops/deploy.ts",
     "test": "bun test",
     "test:w": "bun test --watch"
