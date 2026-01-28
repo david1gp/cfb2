@@ -1,12 +1,20 @@
+import { createToken } from "@/auth/jwt_token/createToken"
+import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import { calculateSHA1FromUint8Array } from "@/utils/sha1"
 import { apiB2UploadViaWorker } from "@client/apiB2UploadViaWorker"
 import { describe, expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 
-describe("apiB2UploadViaWorker v0", () => {
-  const authToken = "test-token"
+describe("apiB2UploadViaWorker v0", async () => {
+  const tokenSecretResult = envTokenSecretResult()
 
-  test.skip("connects to v0 worker upload endpoint", async () => {
+  test("envTokenSecretResult", () => {
+    expect(tokenSecretResult.success).toBeTruthy()
+  })
+
+  const authToken = tokenSecretResult.success ? await createToken("test-user-id", tokenSecretResult.data) : ""
+
+  test("connects to v0 worker upload endpoint", async () => {
     const testContent = new TextEncoder().encode("Integration test: upload via worker")
     const sha1 = await calculateSHA1FromUint8Array(testContent)
     const testDisplayName = "test-file.txt"

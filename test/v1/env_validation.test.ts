@@ -39,6 +39,7 @@ describe.skip("env validation", () => {
       B2_ENDPOINT: process.env.B2_ENDPOINT || "",
       UPLOAD_URL_EXPIRATION_MS: process.env.UPLOAD_URL_EXPIRATION_MS || "86400000",
       HEADER_CACHE_CONTROL: process.env.HEADER_CACHE_CONTROL || "",
+      TOKEN_SECRET: process.env.TOKEN_SECRET || "",
     }
 
     expect(env.B2_ACCOUNT).toBeDefined()

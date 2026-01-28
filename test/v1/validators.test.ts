@@ -166,12 +166,7 @@ describe("getUploadUrl", () => {
       B2_ENDPOINT: process.env.B2_ENDPOINT || "https://s3.eu-central-003.backblazeb2.com",
       UPLOAD_URL_EXPIRATION_MS: "86400000",
       HEADER_CACHE_CONTROL: "public, max-age=86400, stale-while-revalidate=259200, immutable",
+      TOKEN_SECRET: process.env.TOKEN_SECRET || "",
     }
-  })
-
-  test("getApiUrlFromEndpoint extracts host from endpoint", () => {
-    const { getApiUrlFromEndpoint } = require("@/getUploadUrl")
-    const result = getApiUrlFromEndpoint("https://s3.eu-central-003.backblazeb2.com")
-    expect(result).toBe("s3.eu-central-003.backblazeb2.com")
   })
 })

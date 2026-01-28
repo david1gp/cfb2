@@ -1,11 +1,19 @@
+import { createToken } from "@/auth/jwt_token/createToken"
+import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import { apiB2GetUploadUrl } from "@client/apiB2GetUploadUrl"
 import { describe, expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 
-describe("apiB2GetUploadUrl v0", () => {
-  const authToken = "test-token"
+describe("apiB2GetUploadUrl v0", async () => {
+  const tokenSecretResult = envTokenSecretResult()
 
-  test.skip("connects to v0 worker endpoint", async () => {
+  test("envTokenSecretResult", () => {
+    expect(tokenSecretResult.success).toBeTruthy()
+  })
+
+  const authToken = tokenSecretResult.success ? await createToken("test-user-id", tokenSecretResult.data) : ""
+
+  test("connects to v0 worker endpoint", async () => {
     const result = await apiB2GetUploadUrl(workerUrl, authToken)
 
     expect(result.success).toBe(true)
