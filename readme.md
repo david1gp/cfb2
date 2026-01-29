@@ -62,7 +62,7 @@ Each environment can point to different B2 buckets with customized CORS and cach
 
 The Worker uses environment variables for configuration:
 
-- `PUBLIC_BUCKET_BASE_URL`: Your Backblaze B2 bucket public URL
+- `B2_BUCKET_PUBLIC_BASE_URL`: Your Backblaze B2 bucket public URL
 - `CORS_ALLOW_ORIGIN`: Comma-separated list of allowed origins (default: "*")
 - `CORS_MAX_AGE`: CORS max-age header value (default: "300")
 
