@@ -34,7 +34,7 @@ beforeAll(async () => {
 
   console.log("No running server detected → starting Wrangler dev...")
 
-  const args = "dev --config ./wrangler.v0.jsonc".split(" ")
+  const args = "dev --config ./wrangler.jsonc".split(" ")
   wranglerProcess = spawn("wrangler", args, {
     stdio: "inherit",
     shell: true,

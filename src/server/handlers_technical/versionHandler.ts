@@ -1,9 +1,8 @@
-import type { Env } from "@/env/Env"
 import { packageVersion } from "@/env/packageVersion"
+import type { HonoContext } from "@/utils/HonoContext"
 
-export async function versionHandler(_request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
-  return new Response(env.VERSION ?? packageVersion, {
-    status: 200,
-    headers: { "Content-Type": "text/plain" },
+export async function versionHandler(c: HonoContext): Promise<Response> {
+  return c.text(c.env.VERSION ?? packageVersion, 200, {
+    "Content-Type": "text/plain",
   })
 }

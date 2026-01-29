@@ -1,8 +1,7 @@
 import { apiBaseB2 } from "@client/apiBaseB2"
+import { apiPathKv } from "@client/apiKvGet"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
-
-export const apiPathKvList = "/kv"
 
 export type ApiKvListResult = string[]
 
@@ -20,7 +19,7 @@ export async function apiKvList(
     return createError(op, "token is required")
   }
 
-  const url = new URL(apiBaseB2 + apiPathKvList, baseUrl)
+  const url = new URL(apiBaseB2 + apiPathKv, baseUrl)
   if (options?.prefix) {
     url.searchParams.set("prefix", options.prefix)
   }

@@ -1,8 +1,7 @@
-import type { Env } from "@/env/Env"
+import type { HonoContext } from "@/utils/HonoContext"
 
-export async function rootHandler(_request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
-  return new Response("Access to root path is not allowed", {
-    status: 403,
-    headers: { "Content-Type": "text/plain" },
+export async function rootHandler(c: HonoContext): Promise<Response> {
+  return c.text("Access to root path is not allowed", 403, {
+    "Content-Type": "text/plain",
   })
 }

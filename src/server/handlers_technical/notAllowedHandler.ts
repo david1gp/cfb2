@@ -1,8 +1,7 @@
-import type { Env } from "@/env/Env"
+import type { HonoContext } from "@/utils/HonoContext"
 
-export async function notAllowedHandler(_request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
-  return new Response("Method not allowed", {
-    status: 405,
-    headers: { "Content-Type": "text/plain" },
+export async function notAllowedHandler(c: HonoContext): Promise<Response> {
+  return c.text("Method not allowed", 405, {
+    "Content-Type": "text/plain",
   })
 }

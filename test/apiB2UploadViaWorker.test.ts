@@ -5,7 +5,7 @@ import { apiB2UploadViaWorker } from "@client/apiB2UploadViaWorker"
 import { describe, expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 
-describe("apiB2UploadViaWorker v0", async () => {
+describe("apiB2UploadViaWorker", async () => {
   const tokenSecretResult = envTokenSecretResult()
 
   test("envTokenSecretResult", () => {
@@ -14,7 +14,7 @@ describe("apiB2UploadViaWorker v0", async () => {
 
   const authToken = tokenSecretResult.success ? await createToken("test-user-id", tokenSecretResult.data) : ""
 
-  test("connects to v0 worker upload endpoint", async () => {
+  test("connects to worker upload endpoint", async () => {
     const testContent = new TextEncoder().encode("Integration test: upload via worker")
     const sha1 = await calculateSHA1FromUint8Array(testContent)
     const testDisplayName = "test-file.txt"
@@ -60,7 +60,6 @@ describe("apiB2UploadViaWorker v0", async () => {
     expect(result.success).toBe(true)
     if (!result.success) return
     expect(result.data.fileId).toBeDefined()
-    expect(typeof result.data.uploadTimestamp).toBe("number")
     expect(result.data.uploadTimestamp).toBeGreaterThan(0)
   })
 
@@ -81,24 +80,5 @@ describe("apiB2UploadViaWorker v0", async () => {
     )
     if (!result.success) console.log(result)
     expect(result.success).toBe(false)
-  })
-
-  test.skip("handles empty file upload", async () => {
-    const testContent = new Uint8Array(0)
-    const sha1 = await calculateSHA1FromUint8Array(testContent)
-
-    const result = await apiB2UploadViaWorker(
-      authToken,
-      {
-        fullFileName: "empty.txt",
-        mimeType: "text/plain",
-        contentLength: "0",
-        sha1: sha1,
-      },
-      new Blob([testContent]),
-      workerUrl,
-    )
-    if (!result.success) console.log(result)
-    expect(result.success).toBe(true)
   })
 })

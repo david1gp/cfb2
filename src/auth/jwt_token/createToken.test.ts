@@ -7,8 +7,7 @@ import * as a from "valibot"
 async function createToken(uid: string, oid: string | null, secret: string, expiresInDays: number): Promise<string> {
   const encodedSecret = new TextEncoder().encode(secret)
   const alg = "HS256"
-  const jwt = await new SignJWT({
-  })
+  const jwt = await new SignJWT({})
     .setProtectedHeader({ alg })
     .setSubject(uid)
     .setIssuedAt()

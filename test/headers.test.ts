@@ -13,7 +13,7 @@ describe("apiB2GetUploadUrl", async () => {
   const authToken = tokenSecretResult.success ? await createToken("test-user-id", tokenSecretResult.data) : ""
 
   test("has all required headers: CORS, version, timing", async () => {
-    const url = new URL("/get-upload-url", workerUrl)
+    const url = new URL("/api/get-upload-url", workerUrl)
     const response = await fetch(url.toString(), {
       method: "GET",
       headers: {
@@ -21,6 +21,7 @@ describe("apiB2GetUploadUrl", async () => {
       },
     })
 
+    if (!response.ok) console.log(response.status, response.statusText)
     expect(response.ok).toBe(true)
     expect(response.headers.get("Access-Control-Allow-Origin")).toBeDefined()
     expect(response.headers.get("Access-Control-Allow-Methods")).toBeDefined()
