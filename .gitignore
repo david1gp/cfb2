@@ -92,3 +92,4 @@ astro
 
 # Project
 /wrangler.jsonc
+/.*.vars
