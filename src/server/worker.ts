@@ -1,6 +1,6 @@
 import type { Env } from "@/env/Env"
 import { getCorsHeaders } from "@/headers/getCorsHeaders"
-import { setHeaderTimingSingleValue } from "@/v0/headers/setHeaderTimingSingleValue"
+import { setHeaderTimingSingleValue } from "@/server/headers/setHeaderTimingSingleValue"
 import { route } from "./router"
 
 export default {

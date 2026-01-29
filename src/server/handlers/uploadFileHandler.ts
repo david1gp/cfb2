@@ -3,7 +3,7 @@ import { b2ApiGetUploadUrl } from "@/b2/api/b2ApiGetUploadUrl"
 import { b2ApiUploadFile } from "@/b2/api/b2ApiUploadFile"
 import type { Env } from "@/env/Env"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
-import { b2AuthKvGetAndSave } from "@/v0/cache/b2AuthKv"
+import { b2AuthKvGetAndSave } from "@/server/cache/b2AuthKv"
 import { uploadHeaderFields } from "@client/apiB2UploadViaWorker"
 import { createResultError } from "~utils/result/Result"
 

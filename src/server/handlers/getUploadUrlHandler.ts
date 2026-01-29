@@ -2,7 +2,7 @@ import { verifyToken } from "@/auth/jwt_token/verifyToken"
 import { b2ApiGetUploadUrl } from "@/b2/api/b2ApiGetUploadUrl"
 import type { Env } from "@/env/Env"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
-import { b2AuthKvGetAndSave } from "@/v0/cache/b2AuthKv"
+import { b2AuthKvGetAndSave } from "@/server/cache/b2AuthKv"
 import type { B2ApiUploadData } from "@client/apiB2GetUploadUrl"
 import { createResultError } from "~utils/result/Result"
 

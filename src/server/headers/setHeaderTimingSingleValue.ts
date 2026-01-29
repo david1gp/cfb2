@@ -1,4 +1,4 @@
-import { type ServerTimingValues, setHeaderTiming } from "@/v0/headers/setHeaderTiming"
+import { type ServerTimingValues, setHeaderTiming } from "@/server/headers/setHeaderTiming"
 
 export function setHeaderTimingSingleValue(
   r: Response,
