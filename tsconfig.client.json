@@ -8,6 +8,13 @@
     "noEmit": false,
     "allowImportingTsExtensions": false
   },
-  "include": ["./client/**/*"],
-  "exclude": ["node_modules", "dist", "src", "test"]
+  "include": [
+    "./client/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src",
+    "test"
+  ]
 }
