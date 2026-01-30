@@ -28,7 +28,6 @@ describe("apiB2GetUploadUrl", async () => {
 
   test("handles invalid token request", async () => {
     const result = await apiB2GetUploadUrl(workerUrl, "invalid-token")
-    if (!result.success) console.log(result)
     expect(result.success).toBe(false)
   })
 })

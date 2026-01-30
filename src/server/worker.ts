@@ -1,14 +1,12 @@
 import type { Env } from "@/env/Env"
 import { notAllowedHandler } from "@/server/handlers_technical/notAllowedHandler"
-import { rootHandler } from "@/server/handlers_technical/rootHandler"
 import { getCorsHeaders } from "@/server/headers/getCorsHeaders"
 import { setHeaderTimingSingleValue } from "@/server/headers/setHeaderTimingSingleValue"
 import { addRoutesB2 } from "@/server/routes/addRoutesB2"
 import { addRoutesKv } from "@/server/routes/addRoutesKv"
 import { addRoutesOpenapi } from "@/server/routes/addRoutesOpenapi"
+import { addRoutesServer } from "@/server/routes/addRoutesServer"
 import { Hono } from "hono"
-import { describeRoute, resolver } from "hono-openapi"
-import * as a from "valibot"
 
 const app = new Hono<{ Bindings: Env }>()
 
@@ -27,22 +25,7 @@ app.use("/*", async (c, next) => {
   return
 })
 
-app.get(
-  "/",
-  describeRoute({
-    description: "Access denied for root path",
-    responses: {
-      403: {
-        description: "Forbidden",
-        content: {
-          "text/plain": { schema: resolver(a.string()) },
-        },
-      },
-    },
-  }),
-  rootHandler,
-)
-
+addRoutesServer(app)
 addRoutesKv(app)
 addRoutesOpenapi(app)
 addRoutesB2(app)
