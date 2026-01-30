@@ -4,9 +4,34 @@ import { apiBaseB2 } from "@client/apiBaseB2"
 import { apiPathKv } from "@client/apiKvGet"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
+import { kvListResponseSchema } from "@client/apiKvList"
 import { resultErrSchema } from "~utils/result/resultErrSchema"
 
 export function addRoutesKv(app: HonoApp) {
+  app.get(
+    `${apiBaseB2}${apiPathKv}`,
+    describeRoute({
+      description: "List all keys in Cloudflare KV namespace",
+      tags: ["kv"],
+      security: [{ bearerAuth: [] }],
+      responses: {
+        200: {
+          description: "List of keys",
+          content: {
+            "application/json": { schema: resolver(kvListResponseSchema) },
+          },
+        },
+        401: {
+          description: "Unauthorized",
+          content: {
+            "application/json": { schema: resolver(resultErrSchema) },
+          },
+        },
+      },
+    }),
+    kvHandler,
+  )
+
   app.get(
     `${apiBaseB2}${apiPathKv}/:key`,
     describeRoute({
