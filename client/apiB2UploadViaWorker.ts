@@ -15,7 +15,6 @@ export const uploadHeaderFields = {
   sha1: "SHA-1",
 } as const
 
-
 const b2UploadResultJsonSchema = a.pipe(a.string(), a.parseJson(), b2UploadResultSchema)
 
 export async function apiB2UploadViaWorker(

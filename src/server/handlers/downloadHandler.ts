@@ -1,4 +1,4 @@
-import { getCacheControlHeader } from "@/headers/getCacheControlHeader"
+import { getCacheControlHeader } from "@/server/headers/getCacheControlHeader"
 import type { HonoContext } from "@/utils/HonoContext"
 
 export async function downloadHandler(c: HonoContext): Promise<Response> {

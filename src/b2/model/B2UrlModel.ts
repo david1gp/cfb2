@@ -12,7 +12,6 @@ export const b2UrlSchema = a.object({
   ...b2MetaSchemaFields,
 })
 
-
 function types1(d: a.InferOutput<typeof b2UrlSchema>): B2UrlModel {
   return d
 }

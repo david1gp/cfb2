@@ -1,4 +1,3 @@
-
 export type B2ApiUploadFileProps = {
   fullFileName: string
   mimeType: string

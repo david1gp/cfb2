@@ -1,4 +1,5 @@
 import { apiBaseB2 } from "@client/apiBaseB2"
+import { b2GetUploadUrlResponseSchema } from "@client/b2GetUploadUrlResponseSchema"
 import * as a from "valibot"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
@@ -31,11 +32,7 @@ export async function apiB2GetUploadUrl(baseUrl: string, token: string): Promise
     return resultTryParsingFetchErr(op, text, response.status, response.statusText)
   }
 
-  const uploadPathResponseSchema = a.object({
-    uploadUrl: a.string(),
-    authorizationToken: a.string(),
-  })
-  const schema = a.pipe(a.string(), a.parseJson(), uploadPathResponseSchema)
+  const schema = a.pipe(a.string(), a.parseJson(), b2GetUploadUrlResponseSchema)
   const parseResult = a.safeParse(schema, text)
   if (!parseResult.success) {
     const errorMessage = a.summarize(parseResult.issues)

@@ -1,9 +1,12 @@
 import { apiBaseB2 } from "@client/apiBaseB2"
 import { apiPathKv } from "@client/apiKvGet"
+import * as a from "valibot"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
 
 export type ApiKvListResult = string[]
+
+export const kvListResponseSchema = a.array(a.string())
 
 export async function apiKvList(
   baseUrl: string,
@@ -31,19 +34,16 @@ export async function apiKvList(
     },
   })
 
+  const text = await response.text()
   if (!response.ok) {
-    const text = await response.text()
     return resultTryParsingFetchErr(op, text, response.status, response.statusText)
   }
 
-  const text = await response.text()
-  try {
-    const keys = JSON.parse(text)
-    if (!Array.isArray(keys)) {
-      return createError(op, "Expected array response", text)
-    }
-    return createResult(keys)
-  } catch {
-    return createError(op, "Invalid JSON response", text)
+  const schema = a.pipe(a.string(), a.parseJson(), kvListResponseSchema)
+  const parseResult = a.safeParse(schema, text)
+  if (!parseResult.success) {
+    const errorMessage = a.summarize(parseResult.issues)
+    return createError(op, errorMessage, text)
   }
+  return createResult(parseResult.output)
 }

@@ -29,7 +29,9 @@ export async function calculateSHA1FromUint8Array(uint8Array: Uint8Array): Promi
     .join("")
 }
 
-export async function calculateSHA1FromReadableStream(stream: ReadableStream): Promise<{ sha1: string; uint8Array: Uint8Array }> {
+export async function calculateSHA1FromReadableStream(
+  stream: ReadableStream,
+): Promise<{ sha1: string; uint8Array: Uint8Array }> {
   const reader = stream.getReader()
   const chunks: Uint8Array[] = []
   let totalLength = 0
