@@ -1,6 +1,5 @@
-import { downloadHandler } from "@/server/handlers/downloadHandler"
+import { downloadHandlerDummy } from "@/server/handlers/downloadHandlerDummy"
 import { getUploadUrlHandler } from "@/server/handlers/getUploadUrlHandler"
-import { kvHandler } from "@/server/handlers/kvHandler"
 import { uploadFileHandler } from "@/server/handlers/uploadFileHandler"
 import { isOnlineHandler } from "@/server/handlers_technical/isOnlineHandler"
 import { versionHandler } from "@/server/handlers_technical/versionHandler"
@@ -11,19 +10,19 @@ import { apiPathVersion } from "@client/apiB2GetVersion"
 import { apiPathIsOnline } from "@client/apiB2IsOnline"
 import { apiPathUploadFile } from "@client/apiB2UploadViaWorker"
 import { apiBaseB2 } from "@client/apiBaseB2"
-import { apiPathKv } from "@client/apiKvGet"
-import { kvListResponseSchema } from "@client/apiKvList"
 import { b2GetUploadUrlResponseSchema } from "@client/b2GetUploadUrlResponseSchema"
 import { b2UploadResultSchema } from "@client/b2UploadResultSchema"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
 import { resultErrSchema } from "~utils/result/resultErrSchema"
+import { downloadHandlerReal } from "../handlers/downloadHandlerReal"
 
 export function addRoutesB2(app: HonoApp) {
   app.get(
     `${apiBaseB2}${apiPathVersion}`,
     describeRoute({
       description: "Get the current API version",
+      tags: ["b2"],
       responses: {
         200: {
           description: "Successful response",
@@ -40,6 +39,7 @@ export function addRoutesB2(app: HonoApp) {
     `${apiBaseB2}${apiPathIsOnline}`,
     describeRoute({
       description: "Health check endpoint",
+      tags: ["b2"],
       responses: {
         200: {
           description: "Service is healthy",
@@ -56,6 +56,7 @@ export function addRoutesB2(app: HonoApp) {
     `${apiBaseB2}${apiPathDownloadFile}/:key*`,
     describeRoute({
       description: "Download a file from Backblaze B2 storage",
+      tags: ["b2"],
       responses: {
         200: {
           description: "File content",
@@ -65,13 +66,15 @@ export function addRoutesB2(app: HonoApp) {
         },
       },
     }),
-    downloadHandler,
+    downloadHandlerDummy,
   )
 
   app.get(
     `${apiBaseB2}${apiPathGetUploadUrl}`,
     describeRoute({
       description: "Get B2 upload URL and authorization token",
+      tags: ["b2"],
+      security: [{ bearerAuth: [] }],
       responses: {
         200: {
           description: "Upload URL and token",
@@ -94,6 +97,8 @@ export function addRoutesB2(app: HonoApp) {
     `${apiBaseB2}${apiPathUploadFile}`,
     describeRoute({
       description: "Upload a file to Backblaze B2 via the worker",
+      tags: ["b2"],
+      security: [{ bearerAuth: [] }],
       responses: {
         200: {
           description: "Upload result",
@@ -118,25 +123,32 @@ export function addRoutesB2(app: HonoApp) {
     uploadFileHandler,
   )
 
+  addRoutesB2DownloadFile(app)
+}
+
+export function addRoutesB2DownloadFile(app: HonoApp) {
   app.get(
-    `${apiBaseB2}${apiPathKv}`,
+    `/:fullFileName*`,
     describeRoute({
-      description: "List all keys in Cloudflare KV namespace",
+      description: "Download a file from Backblaze B2 storage",
+      tags: ["b2"],
       responses: {
         200: {
-          description: "List of keys",
+          description: "File content",
           content: {
-            "application/json": { schema: resolver(kvListResponseSchema) },
+            "application/octet-stream": { schema: resolver(a.string()) },
           },
         },
-        401: {
-          description: "Unauthorized",
+        404: {
+          description: "File not found in bucket",
           content: {
-            "application/json": { schema: resolver(resultErrSchema) },
+            "text/plain": {
+              schema: resolver(a.string()),
+            },
           },
         },
       },
     }),
-    kvHandler,
+    downloadHandlerReal,
   )
 }

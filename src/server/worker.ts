@@ -43,9 +43,9 @@ app.get(
   rootHandler,
 )
 
-addRoutesB2(app)
 addRoutesKv(app)
 addRoutesOpenapi(app)
+addRoutesB2(app)
 
 app.notFound(notAllowedHandler)
 

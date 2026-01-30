@@ -1,7 +1,7 @@
 import { getCacheControlHeader } from "@/server/headers/getCacheControlHeader"
 import type { HonoContext } from "@/utils/HonoContext"
 
-export async function downloadHandler(c: HonoContext): Promise<Response> {
+export async function downloadHandlerDummy(c: HonoContext): Promise<Response> {
   const pathParts = c.req.path.split("/")
   const fullFileName = pathParts[pathParts.length - 1]
 
