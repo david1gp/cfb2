@@ -12,7 +12,7 @@ import { workerUrl } from "./workerUrl"
 function generateTestKey(prefix: string): string {
   const timestamp = Date.now()
   const random = Math.random().toString(36).substring(2, 8)
-  return `test/${prefix}/${timestamp}-${random}`
+  return `test-${prefix}-${timestamp}-${random}`
 }
 
 describe("KV API", () => {
