@@ -12,7 +12,7 @@ export async function apiB2IsOnline(baseUrl: string): PromiseResult<boolean> {
 
   let url: URL
   try {
-    url = new URL(apiPathB2 + apiPathIsOnline, baseUrl)
+    url = new URL(apiPathIsOnline, baseUrl)
   } catch {
     return createError(op, `Invalid URL: ${baseUrl}`)
   }
