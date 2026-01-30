@@ -1,7 +1,6 @@
-import { apiBaseB2 } from "@client/apiBaseB2"
-import { apiPathKv } from "@client/apiKvGet"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
+import { apiPathKv } from "./apiBaseKv"
 
 export async function apiKvPost(
   baseUrl: string,
@@ -22,7 +21,7 @@ export async function apiKvPost(
     return createError(op, "token is required")
   }
 
-  const url = new URL(apiBaseB2 + apiPathKv + "/" + encodeURIComponent(key), baseUrl)
+  const url = new URL(apiPathKv + "/" + encodeURIComponent(key), baseUrl)
 
   const headers: Record<string, string> = {
     Authorization: `Bearer ${token}`,

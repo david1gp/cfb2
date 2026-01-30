@@ -3,7 +3,7 @@ import { uploadFileHandler } from "@/server/handlers/uploadFileHandler"
 import type { HonoApp } from "@/utils/HonoApp"
 import { apiPathGetUploadUrl } from "@client/apiB2GetUploadUrl"
 import { apiPathUploadFile } from "@client/apiB2UploadViaWorker"
-import { apiBaseB2 } from "@client/apiBaseB2"
+import { apiPathB2 } from "@client/apiBaseB2"
 import { b2GetUploadUrlResponseSchema } from "@client/b2GetUploadUrlResponseSchema"
 import { b2UploadResultSchema } from "@client/b2UploadResultSchema"
 import { describeRoute, resolver } from "hono-openapi"
@@ -13,7 +13,7 @@ import { downloadHandler } from "../handlers/downloadHandler"
 
 export function addRoutesB2(app: HonoApp) {
   app.get(
-    `${apiBaseB2}${apiPathGetUploadUrl}`,
+    `${apiPathB2}${apiPathGetUploadUrl}`,
     describeRoute({
       description: "Get B2 upload URL and authorization token",
       tags: ["b2"],
@@ -37,7 +37,7 @@ export function addRoutesB2(app: HonoApp) {
   )
 
   app.post(
-    `${apiBaseB2}${apiPathUploadFile}`,
+    `${apiPathB2}${apiPathUploadFile}`,
     describeRoute({
       description: "Upload a file to Backblaze B2 via the worker",
       tags: ["b2"],

@@ -1,1 +1,1 @@
-export const apiBaseB2 = "/api"
+export const apiPathB2 = "/b2"

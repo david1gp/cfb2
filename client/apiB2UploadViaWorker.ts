@@ -1,4 +1,4 @@
-import { apiBaseB2 } from "@client/apiBaseB2"
+import { apiPathB2 } from "@client/apiBaseB2"
 import type { B2ApiUploadFileProps } from "@client/B2ApiUploadFileProps"
 import * as a from "valibot"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
@@ -37,7 +37,7 @@ export async function apiB2UploadViaWorker(
     [uploadHeaderFields.sha1]: p.sha1,
   }
 
-  const response = await fetch(baseUrl + apiBaseB2 + apiPathUploadFile, {
+  const response = await fetch(baseUrl + apiPathB2 + apiPathUploadFile, {
     method: "POST",
     headers,
     body: file,

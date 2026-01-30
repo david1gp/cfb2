@@ -1,11 +1,10 @@
 import { serverPort } from "@/utils/serverPort"
 import { apiPathIsOnline } from "@client/apiB2IsOnline"
-import { apiBaseB2 } from "@client/apiBaseB2"
 import { afterAll, beforeAll } from "bun:test"
 import { spawn, type ChildProcess } from "node:child_process"
 
 const BASE_URL = `http://localhost:${serverPort}`
-const HEALTH_URL = BASE_URL + apiBaseB2 + apiPathIsOnline
+const HEALTH_URL = BASE_URL + apiPathIsOnline
 const HEALTH_EXPECTED = "OK"
 
 let wranglerProcess: ChildProcess | null = null

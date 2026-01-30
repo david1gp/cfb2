@@ -1,4 +1,4 @@
-import { apiBaseB2 } from "@client/apiBaseB2"
+import { apiPathB2 } from "@client/apiBaseB2"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 
 export const apiPathIsOnline = "/health"
@@ -12,7 +12,7 @@ export async function apiB2IsOnline(baseUrl: string): PromiseResult<boolean> {
 
   let url: URL
   try {
-    url = new URL(apiBaseB2 + apiPathIsOnline, baseUrl)
+    url = new URL(apiPathB2 + apiPathIsOnline, baseUrl)
   } catch {
     return createError(op, `Invalid URL: ${baseUrl}`)
   }

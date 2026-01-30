@@ -1,8 +1,7 @@
-import { apiBaseB2 } from "@client/apiBaseB2"
-import { apiPathKv } from "@client/apiKvGet"
 import * as a from "valibot"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
+import { apiPathKv } from "./apiBaseKv"
 
 export type ApiKvListResult = string[]
 
@@ -22,7 +21,7 @@ export async function apiKvList(
     return createError(op, "token is required")
   }
 
-  const url = new URL(apiBaseB2 + apiPathKv, baseUrl)
+  const url = new URL(apiPathKv, baseUrl)
   if (options?.prefix) {
     url.searchParams.set("prefix", options.prefix)
   }

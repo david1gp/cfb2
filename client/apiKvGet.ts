@@ -1,8 +1,6 @@
-import { apiBaseB2 } from "@client/apiBaseB2"
+import { apiPathKv } from "@client/apiBaseKv"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
-
-export const apiPathKv = "/kv"
 
 export async function apiKvGet(baseUrl: string, key: string, token: string): PromiseResult<string | null> {
   const op = "apiKvGet"
@@ -17,7 +15,7 @@ export async function apiKvGet(baseUrl: string, key: string, token: string): Pro
     return createError(op, "token is required")
   }
 
-  const url = new URL(apiBaseB2 + apiPathKv + "/" + encodeURIComponent(key), baseUrl)
+  const url = new URL(apiPathKv + "/" + encodeURIComponent(key), baseUrl)
 
   const response = await fetch(url.toString(), {
     method: "GET",

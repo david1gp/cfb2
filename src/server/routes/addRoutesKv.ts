@@ -1,15 +1,14 @@
 import { kvHandler } from "@/server/handlers/kvHandler"
 import type { HonoApp } from "@/utils/HonoApp"
-import { apiBaseB2 } from "@client/apiBaseB2"
-import { apiPathKv } from "@client/apiKvGet"
+import { apiPathKv } from "@client/apiBaseKv"
+import { kvListResponseSchema } from "@client/apiKvList"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
-import { kvListResponseSchema } from "@client/apiKvList"
 import { resultErrSchema } from "~utils/result/resultErrSchema"
 
 export function addRoutesKv(app: HonoApp) {
   app.get(
-    `${apiBaseB2}${apiPathKv}`,
+    apiPathKv,
     describeRoute({
       description: "List all keys in Cloudflare KV namespace",
       tags: ["kv"],
@@ -33,7 +32,7 @@ export function addRoutesKv(app: HonoApp) {
   )
 
   app.get(
-    `${apiBaseB2}${apiPathKv}/:key`,
+    apiPathKv + "/:key",
     describeRoute({
       description: "Get value for a specific KV key",
       tags: ["kv"],
@@ -57,7 +56,7 @@ export function addRoutesKv(app: HonoApp) {
   )
 
   app.post(
-    `${apiBaseB2}${apiPathKv}/:key`,
+    apiPathKv + "/:key",
     describeRoute({
       description: "Set value for a KV key with optional expiration",
       tags: ["kv"],
@@ -87,7 +86,7 @@ export function addRoutesKv(app: HonoApp) {
   )
 
   app.delete(
-    `${apiBaseB2}${apiPathKv}/:key`,
+    apiPathKv + "/:key",
     describeRoute({
       description: "Delete a specific KV key",
       tags: ["kv"],

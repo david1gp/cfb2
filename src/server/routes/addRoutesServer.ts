@@ -4,7 +4,6 @@ import { versionHandler } from "@/server/handlers_technical/versionHandler"
 import type { HonoApp } from "@/utils/HonoApp"
 import { apiPathVersion } from "@client/apiB2GetVersion"
 import { apiPathIsOnline } from "@client/apiB2IsOnline"
-import { apiBaseB2 } from "@client/apiBaseB2"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
 
@@ -26,7 +25,7 @@ export function addRoutesServer(app: HonoApp) {
     rootHandler,
   )
   app.get(
-    `${apiBaseB2}${apiPathVersion}`,
+    apiPathVersion,
     describeRoute({
       description: "Get the current API version",
       tags: ["server"],
@@ -43,7 +42,7 @@ export function addRoutesServer(app: HonoApp) {
   )
 
   app.get(
-    `${apiBaseB2}${apiPathIsOnline}`,
+    apiPathIsOnline,
     describeRoute({
       description: "Health check endpoint",
       tags: ["server"],
