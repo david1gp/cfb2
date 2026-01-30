@@ -53,7 +53,7 @@ export function addRoutesB2(app: HonoApp) {
   )
 
   app.get(
-    `${apiBaseB2}${apiPathDownloadFile}/:key*`,
+    "/b2/*",
     describeRoute({
       description: "Download a file from Backblaze B2 storage",
       tags: ["b2"],
@@ -64,9 +64,17 @@ export function addRoutesB2(app: HonoApp) {
             "application/octet-stream": { schema: resolver(a.string()) },
           },
         },
+        404: {
+          description: "File not found in bucket",
+          content: {
+            "text/plain": {
+              schema: resolver(a.string()),
+            },
+          },
+        },
       },
     }),
-    downloadHandlerDummy,
+    downloadHandlerReal,
   )
 
   app.get(
@@ -121,34 +129,5 @@ export function addRoutesB2(app: HonoApp) {
       },
     }),
     uploadFileHandler,
-  )
-
-  addRoutesB2DownloadFile(app)
-}
-
-export function addRoutesB2DownloadFile(app: HonoApp) {
-  app.get(
-    `/:fullFileName*`,
-    describeRoute({
-      description: "Download a file from Backblaze B2 storage",
-      tags: ["b2"],
-      responses: {
-        200: {
-          description: "File content",
-          content: {
-            "application/octet-stream": { schema: resolver(a.string()) },
-          },
-        },
-        404: {
-          description: "File not found in bucket",
-          content: {
-            "text/plain": {
-              schema: resolver(a.string()),
-            },
-          },
-        },
-      },
-    }),
-    downloadHandlerReal,
   )
 }

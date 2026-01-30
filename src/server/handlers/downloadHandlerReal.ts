@@ -4,8 +4,8 @@ export async function downloadHandlerReal(c: HonoContext): Promise<Response> {
   const op = "downloadHandlerReal"
   const env = c.env
 
-  // Forward the full original path directly to B2 bucket
-  const objectKey = c.req.path
+  // Route: /b2/* - extract path after /b2/
+  const objectKey = c.req.path.replace(/^\/b2\//, "")
 
   if (!objectKey) {
     return c.text("File path required", 400)
