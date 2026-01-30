@@ -1,6 +1,8 @@
 import { packageVersion } from "@/env/packageVersion"
 import type { HonoApp } from "@/utils/HonoApp"
-import { openAPIRouteHandler } from "hono-openapi"
+import { describeRoute, openAPIRouteHandler, resolver } from "hono-openapi"
+import * as a from "valibot"
+import { resultErrSchema } from "~utils/result/resultErrSchema"
 
 export function addRoutesOpenapi(app: HonoApp) {
   const openApiOptions = {
@@ -11,23 +13,93 @@ export function addRoutesOpenapi(app: HonoApp) {
         description:
           "A lightweight Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through the Bandwidth Alliance.\n\nProvides REST API for file upload/download and KV key-value storage.",
       },
-      servers: [
-        { url: "http://localhost:3000", description: "Local Development Server" },
-        { url: "https://your-worker.your-subdomain.workers.dev", description: "Cloudflare Worker Production" },
-      ],
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: "http" as const,
+            scheme: "bearer",
+            bearerFormat: "JWT",
+          },
+        },
+      },
     },
   }
 
-  app.get("/openapi", openAPIRouteHandler(app, openApiOptions))
+  app.get(
+    "/openapi",
+    describeRoute({
+      description: "Get OpenAPI specification",
+      tags: ["openapi"],
+      security: [],
+      responses: {
+        200: {
+          description: "OpenAPI JSON specification",
+          content: {
+            "application/json": { schema: resolver(a.string()) },
+          },
+        },
+        401: {
+          description: "Unauthorized",
+          content: {
+            "application/json": { schema: resolver(resultErrSchema) },
+          },
+        },
+      },
+    }),
+    openAPIRouteHandler(app, openApiOptions),
+  )
 
-  app.get("/doc", openAPIRouteHandler(app, openApiOptions))
+  app.get(
+    "/doc",
+    describeRoute({
+      description: "Get OpenAPI specification (redirect)",
+      tags: ["openapi"],
+      security: [],
+      responses: {
+        200: {
+          description: "OpenAPI JSON specification",
+          content: {
+            "application/json": { schema: resolver(a.string()) },
+          },
+        },
+        401: {
+          description: "Unauthorized",
+          content: {
+            "application/json": { schema: resolver(resultErrSchema) },
+          },
+        },
+      },
+    }),
+    openAPIRouteHandler(app, openApiOptions),
+  )
 
   addRoutesOpenapiSwagger(app)
 }
 
 export function addRoutesOpenapiSwagger(app: HonoApp) {
-  app.get("/ui", async (c) => {
-    const uiHtml = `<!DOCTYPE html>
+  app.get(
+    "/ui",
+    describeRoute({
+      description: "Swagger UI documentation interface",
+      tags: ["openapi"],
+      security: [],
+      responses: {
+        200: {
+          description: "Swagger UI HTML page",
+          content: {
+            "text/html": { schema: resolver(a.string()) },
+          },
+        },
+        401: {
+          description: "Unauthorized",
+          content: {
+            "application/json": { schema: resolver(resultErrSchema) },
+          },
+        },
+      },
+    }),
+    async (c) => {
+      const uiHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -64,6 +136,7 @@ export function addRoutesOpenapiSwagger(app: HonoApp) {
   </script>
 </body>
 </html>`
-    return c.html(uiHtml)
-  })
+      return c.html(uiHtml)
+    },
+  )
 }

@@ -11,6 +11,8 @@ export function addRoutesKv(app: HonoApp) {
     `${apiBaseB2}${apiPathKv}/:key`,
     describeRoute({
       description: "Get value for a specific KV key",
+      tags: ["kv"],
+      security: [{ bearerAuth: [] }],
       responses: {
         200: {
           description: "Key value",
@@ -33,6 +35,8 @@ export function addRoutesKv(app: HonoApp) {
     `${apiBaseB2}${apiPathKv}/:key`,
     describeRoute({
       description: "Set value for a KV key with optional expiration",
+      tags: ["kv"],
+      security: [{ bearerAuth: [] }],
       responses: {
         200: {
           description: "Success",
@@ -61,6 +65,8 @@ export function addRoutesKv(app: HonoApp) {
     `${apiBaseB2}${apiPathKv}/:key`,
     describeRoute({
       description: "Delete a specific KV key",
+      tags: ["kv"],
+      security: [{ bearerAuth: [] }],
       responses: {
         200: {
           description: "Success",
