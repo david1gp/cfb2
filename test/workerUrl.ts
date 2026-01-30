@@ -1,1 +1,3 @@
-export const workerUrl = "http://localhost:8787"
+import { serverPort } from "@/utils/serverPort"
+
+export const workerUrl = "http://localhost:" + serverPort
