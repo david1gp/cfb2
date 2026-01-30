@@ -10,8 +10,8 @@
   // Default configuration (can be used as a fallback)
   "vars": {
     "B2_BUCKET_PUBLIC_BASE_URL": "https://your-default-bucket.s3.region.backblazeb2.com",
-    "CORS_ALLOW_ORIGIN": "*",
-    "CORS_MAX_AGE": "300"
+    "HEADER_CORS_ALLOW_ORIGIN": "*",
+    "HEADER_CORS_MAX_AGE": "300"
   },
 
   // Enable observability for debugging and monitoring
@@ -25,8 +25,8 @@
     "production": {
       "vars": {
         "B2_BUCKET_PUBLIC_BASE_URL": "https://your-production-bucket.s3.region.backblazeb2.com",
-        "CORS_ALLOW_ORIGIN": "https://yourdomain.com, https://www.yourdomain.com",
-        "CORS_MAX_AGE": "86400"
+        "HEADER_CORS_ALLOW_ORIGIN": "https://yourdomain.com, https://www.yourdomain.com",
+        "HEADER_CORS_MAX_AGE": "86400"
       },
       "routes": [
         {
@@ -41,8 +41,8 @@
     "dev": {
       "vars": {
         "B2_BUCKET_PUBLIC_BASE_URL": "https://your-dev-bucket.s3.region.backblazeb2.com",
-        "CORS_ALLOW_ORIGIN": "*",
-        "CORS_MAX_AGE": "0"
+        "HEADER_CORS_ALLOW_ORIGIN": "*",
+        "HEADER_CORS_MAX_AGE": "0"
       },
       "routes": [
         {
@@ -70,12 +70,12 @@ wrangler tail my-storage-proxy --env production
 
 CONFIGURATION NOTES:
 
-1. CORS_ALLOW_ORIGIN:
+1. HEADER_CORS_ALLOW_ORIGIN:
    - Use "*" for public access
    - Use comma-separated domains for restricted access
    - Set to "*" for development (open access)
 
-2. CORS_MAX_AGE:
+2. HEADER_CORS_MAX_AGE:
    - 86400 = 1 day (good for production media files)
    - 0 = no caching (development)
 

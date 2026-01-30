@@ -6,7 +6,7 @@ export function getCorsHeaders(env: Env, request: Request): Headers {
   const headers = new Headers()
 
   // Parse CORS allow origins (comma-separated), default to ["*"]
-  const allowOrigins = parseAllowedOrigins(env.CORS_ALLOW_ORIGIN)
+  const allowOrigins = parseAllowedOrigins(env.HEADER_CORS_ALLOW_ORIGIN)
 
   const requestOrigin = getOriginFromRequest(request)
 
@@ -17,7 +17,7 @@ export function getCorsHeaders(env: Env, request: Request): Headers {
   }
 
   // Set max age if provided, default to 300 (5 minutes)
-  const maxAge = env.CORS_MAX_AGE || "300"
+  const maxAge = env.HEADER_CORS_MAX_AGE || "300"
   headers.set("Access-Control-Max-Age", maxAge)
 
   headers.set("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS, POST")
