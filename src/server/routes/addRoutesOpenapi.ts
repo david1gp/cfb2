@@ -8,10 +8,23 @@ export function addRoutesOpenapi(app: HonoApp) {
   const openApiOptions = {
     documentation: {
       info: {
-        title: "Adaptive CFB2 API",
+        title: "@adaptive-sm/cfb2 - Zero-Cost B2 Object Storage Cloudflare Proxy",
         version: packageVersion,
-        description:
-          "A lightweight Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through the Bandwidth Alliance.\n\nProvides REST API for file upload/download and KV key-value storage.",
+        description: `A clever Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through the Bandwidth Alliance.
+
+* **Zero bandwidth costs** – leverage Cloudflare's Bandwidth Alliance with Backblaze B2 for free outbound traffic.
+* **Lightning fast** – runs on Cloudflare's global edge network with automatic CDN capabilities.
+* **Dead simple** – just point it at your B2 bucket and forget about expensive bandwidth bills.
+* **Production ready** – handles CORS, proper headers, and multiple environments out of the box.
+
+Stop paying for outbound bandwidth and start serving your media files smarter, not harder.
+
+**Quick Links**
+
+- code - [https://github.com/adaptive-shield-matrix/cfb2](https://github.com/adaptive-shield-matrix/cfb2)
+- npm - [https://www.npmjs.com/package/@adaptive-sm/cfb2](https://www.npmjs.com/package/@adaptive-sm/cfb2)
+- cloudflare bandwidth alliance - [https://www.cloudflare.com/bandwidth-alliance/](https://www.cloudflare.com/bandwidth-alliance/)
+`,
       },
       components: {
         securitySchemes: {
