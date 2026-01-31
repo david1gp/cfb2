@@ -3,10 +3,10 @@ import { envVariableErrorMessage } from "@/env/envVariableErrorMessage"
 import { privateEnvVariableName } from "@/env/privateEnvVariableName"
 import { createResult, createResultError, type Result } from "~utils/result/Result"
 
-export function envEnvNameResult(env: Env): Result<string> {
-  const op = "envEnvNameResult"
-  const name = privateEnvVariableName.ENV_NAME
-  const value = env.ENV_NAME
+export function envKVResult(env: Env): Result<Env["KV"]> {
+  const op = "envKVResult"
+  const name = privateEnvVariableName.KV
+  const value = env.KV
   if (!value) {
     const errorMessage = envVariableErrorMessage(name)
     return createResultError(op, errorMessage)

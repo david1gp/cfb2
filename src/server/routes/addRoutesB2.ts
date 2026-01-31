@@ -86,6 +86,12 @@ export function addRoutesB2(app: HonoApp) {
             },
           },
         },
+        500: {
+          description: "Configuration error - B2_BUCKET_PUBLIC_BASE_URL or header env vars not set",
+          content: {
+            "text/plain": { schema: resolver(a.string()) },
+          },
+        },
       },
     }),
     downloadHandler,

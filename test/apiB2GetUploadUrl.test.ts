@@ -1,11 +1,13 @@
 import { createToken } from "@/auth/jwt_token/createToken"
+import type { Env } from "@/env/Env"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import { apiB2GetUploadUrl } from "@client/apiB2GetUploadUrl"
 import { describe, expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 
 describe("apiB2GetUploadUrl", async () => {
-  const tokenSecretResult = envTokenSecretResult()
+  const env = process.env as unknown as Env
+  const tokenSecretResult = envTokenSecretResult(env)
 
   test("envTokenSecretResult", () => {
     expect(tokenSecretResult.success).toBeTruthy()

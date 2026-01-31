@@ -3,10 +3,10 @@ import { envVariableErrorMessage } from "@/env/envVariableErrorMessage"
 import { privateEnvVariableName } from "@/env/privateEnvVariableName"
 import { createResult, createResultError, type Result } from "~utils/result/Result"
 
-export function envEnvNameResult(env: Env): Result<string> {
-  const op = "envEnvNameResult"
-  const name = privateEnvVariableName.ENV_NAME
-  const value = env.ENV_NAME
+export function envB2BucketIdResult(env: Env): Result<string> {
+  const op = "envB2BucketIdResult"
+  const name = privateEnvVariableName.B2_BUCKET_ID
+  const value = env.B2_BUCKET_ID
   if (!value) {
     const errorMessage = envVariableErrorMessage(name)
     return createResultError(op, errorMessage)

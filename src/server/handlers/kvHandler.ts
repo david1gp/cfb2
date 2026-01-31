@@ -1,42 +1,50 @@
 import { verifyToken } from "@/auth/jwt_token/verifyToken"
+import { envKVResult } from "@/env/envKVResult"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
+import type { Env } from "@/env/Env"
 import type { HonoContext } from "@/utils/HonoContext"
 import { createResultError } from "~utils/result/Result"
 
 export async function kvHandler(c: HonoContext): Promise<Response> {
   const method = c.req.method
 
+  const kvResult = envKVResult(c.env)
+  if (!kvResult.success) {
+    return c.json(createResultError("kvHandler", kvResult.errorMessage), 500)
+  }
+  const kv = kvResult.data
+
   if (method === "GET") {
     const keyParam = c.req.param("key")
     if (keyParam !== undefined) {
-      return kvGetHandler(c)
+      return kvGetHandler(c, kv)
     }
-    return kvListHandler(c)
+    return kvListHandler(c, kv)
   }
 
   if (method === "POST") {
-    return kvPostHandler(c)
+    return kvPostHandler(c, kv)
   }
 
   if (method === "DELETE") {
-    return kvDeleteHandler(c)
+    return kvDeleteHandler(c, kv)
   }
 
   return c.json(createResultError("kvHandler", "Method not allowed"), 405)
 }
 
-async function kvListHandler(c: HonoContext): Promise<Response> {
+async function kvListHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise<Response> {
   const tokenValidation = await validateToken(c, "kvListHandler")
   if (!tokenValidation.valid) return tokenValidation.error!
 
   const prefix = c.req.query("prefix") || undefined
-  const listResult = await c.env.KV.list({ prefix })
-  const keys = listResult.keys.map((k) => k.name)
+  const listResult = await kv.list({ prefix })
+  const keys = listResult.keys.map((k: { name: string }) => k.name)
 
   return c.json(keys, 200)
 }
 
-async function kvGetHandler(c: HonoContext): Promise<Response> {
+async function kvGetHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise<Response> {
   const tokenValidation = await validateToken(c, "kvGetHandler")
   if (!tokenValidation.valid) return tokenValidation.error!
 
@@ -46,14 +54,14 @@ async function kvGetHandler(c: HonoContext): Promise<Response> {
     return c.json(createResultError("kvGetHandler", "Invalid key"), 400)
   }
 
-  const value = await c.env.KV.get(key)
+  const value = await kv.get(key)
 
   return c.text(value ?? "null", 200, {
     "Content-Type": "text/plain",
   })
 }
 
-async function kvPostHandler(c: HonoContext): Promise<Response> {
+async function kvPostHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise<Response> {
   const tokenValidation = await validateToken(c, "kvPostHandler")
   if (!tokenValidation.valid) return tokenValidation.error!
 
@@ -69,7 +77,7 @@ async function kvPostHandler(c: HonoContext): Promise<Response> {
 
   const body = await c.req.text()
 
-  await c.env.KV.put(key, body, {
+  await kv.put(key, body, {
     expirationTtl: expirationSeconds,
   })
 
@@ -78,7 +86,7 @@ async function kvPostHandler(c: HonoContext): Promise<Response> {
   })
 }
 
-async function kvDeleteHandler(c: HonoContext): Promise<Response> {
+async function kvDeleteHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise<Response> {
   const tokenValidation = await validateToken(c, "kvDeleteHandler")
   if (!tokenValidation.valid) return tokenValidation.error!
 
@@ -88,7 +96,7 @@ async function kvDeleteHandler(c: HonoContext): Promise<Response> {
     return c.json(createResultError("kvDeleteHandler", "Invalid key"), 400)
   }
 
-  await c.env.KV.delete(key)
+  await kv.delete(key)
 
   return c.text("null", 200, {
     "Content-Type": "application/json",
@@ -109,7 +117,7 @@ async function validateToken(c: HonoContext, handlerName: string): Promise<{ val
     authHeader = authHeader.slice(7)
   }
 
-  const saltResult = envTokenSecretResult(c.env as unknown as Record<string, string | undefined>)
+  const saltResult = envTokenSecretResult(c.env)
   if (!saltResult.success) {
     return {
       valid: false,

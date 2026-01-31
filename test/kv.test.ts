@@ -1,4 +1,5 @@
 import { createToken } from "@/auth/jwt_token/createToken"
+import type { Env } from "@/env/Env"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import { apiKvDelete } from "@client/apiKvDelete"
 import { apiKvGet } from "@client/apiKvGet"
@@ -16,6 +17,7 @@ function generateTestKey(prefix: string): string {
 }
 
 describe("KV API", () => {
+  const env = process.env as unknown as Env
   let token: string
   const testKeys: string[] = []
 
@@ -33,7 +35,7 @@ describe("KV API", () => {
         }
       })
     }
-    const tokenSecretResult = envTokenSecretResult()
+    const tokenSecretResult = envTokenSecretResult(env)
     if (tokenSecretResult.success) {
       token = await createToken("test-user-id", tokenSecretResult.data)
     } else {

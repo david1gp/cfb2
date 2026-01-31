@@ -3,10 +3,10 @@ import { envVariableErrorMessage } from "@/env/envVariableErrorMessage"
 import { privateEnvVariableName } from "@/env/privateEnvVariableName"
 import { createResult, createResultError, type Result } from "~utils/result/Result"
 
-export function envEnvNameResult(env: Env): Result<string> {
-  const op = "envEnvNameResult"
-  const name = privateEnvVariableName.ENV_NAME
-  const value = env.ENV_NAME
+export function envHeaderCacheControlResult(env: Env): Result<string> {
+  const op = "envHeaderCacheControlResult"
+  const name = privateEnvVariableName.HEADER_CACHE_CONTROL
+  const value = env.HEADER_CACHE_CONTROL
   if (!value) {
     const errorMessage = envVariableErrorMessage(name)
     return createResultError(op, errorMessage)

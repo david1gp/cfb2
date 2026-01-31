@@ -26,6 +26,12 @@ export function addRoutesKv(app: HonoApp) {
             "application/json": { schema: resolver(resultErrSchema) },
           },
         },
+        500: {
+          description: "Configuration error - KV binding not set",
+          content: {
+            "application/json": { schema: resolver(resultErrSchema) },
+          },
+        },
       },
     }),
     kvHandler,
@@ -46,6 +52,12 @@ export function addRoutesKv(app: HonoApp) {
         },
         401: {
           description: "Unauthorized",
+          content: {
+            "application/json": { schema: resolver(resultErrSchema) },
+          },
+        },
+        500: {
+          description: "Configuration error - KV binding not set",
           content: {
             "application/json": { schema: resolver(resultErrSchema) },
           },
@@ -80,6 +92,12 @@ export function addRoutesKv(app: HonoApp) {
             "application/json": { schema: resolver(resultErrSchema) },
           },
         },
+        500: {
+          description: "Configuration error - KV binding not set",
+          content: {
+            "application/json": { schema: resolver(resultErrSchema) },
+          },
+        },
       },
     }),
     kvHandler,
@@ -106,6 +124,12 @@ export function addRoutesKv(app: HonoApp) {
         },
         401: {
           description: "Unauthorized",
+          content: {
+            "application/json": { schema: resolver(resultErrSchema) },
+          },
+        },
+        500: {
+          description: "Configuration error - KV binding not set",
           content: {
             "application/json": { schema: resolver(resultErrSchema) },
           },

@@ -11,17 +11,17 @@ import { createResult, type PromiseResult } from "~utils/result/Result"
 export async function b2AuthKvGetAndSave(env: Env): PromiseResult<B2AuthModel> {
   const op = "b2AuthKvGetAndSave"
 
-  const envNameResult = envEnvNameResult(env as unknown as Record<string, string>)
+  const envNameResult = envEnvNameResult(env)
   if (!envNameResult.success) return envNameResult
   const envName = envNameResult.data
 
   const cachedAuth = await b2AuthKvLoad(env, envName)
   if (cachedAuth) return createResult(cachedAuth)
 
-  const accountResult = envB2AccountResult(env as unknown as Record<string, string>)
+  const accountResult = envB2AccountResult(env)
   if (!accountResult.success) return accountResult
 
-  const keyResult = envB2KeyResult(env as unknown as Record<string, string>)
+  const keyResult = envB2KeyResult(env)
   if (!keyResult.success) return keyResult
 
   const authResult = await b2ApiAuthorizeAccount(accountResult.data, keyResult.data)

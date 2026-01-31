@@ -18,7 +18,7 @@ export async function uploadFileHandler(c: HonoContext): Promise<Response> {
     authHeader = authHeader.slice(7)
   }
 
-  const saltResult = envTokenSecretResult(c.env as unknown as Record<string, string>)
+  const saltResult = envTokenSecretResult(c.env)
   if (!saltResult.success) {
     return c.json(saltResult, 500)
   }

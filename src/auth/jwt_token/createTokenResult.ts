@@ -1,9 +1,10 @@
 import { createToken } from "@/auth/jwt_token/createToken"
 import { tokenValidDurationInDays } from "@/auth/jwt_token/tokenValidDurationInDays"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
+import type { Env } from "@/env/Env"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 
-export async function createTokenResult(userId: string, env: Record<string, string>): PromiseResult<string> {
+export async function createTokenResult(userId: string, env: Env): PromiseResult<string> {
   const expiresInDays = tokenValidDurationInDays
   const op = "createTokenResult"
   console.log(op, userId)
