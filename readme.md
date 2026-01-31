@@ -1,4 +1,4 @@
-# @adaptive-sm/cf-b2 - 🚀 Zero-Cost B2 Object Storage Cloudflare Proxy
+# @adaptive-sm/cfb2 - 🚀 Zero-Cost B2 Object Storage Cloudflare Proxy
 
 A clever Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through the Bandwidth Alliance.
 

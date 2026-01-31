@@ -39,7 +39,7 @@
   "type": "module",
   "private": false,
   "license": "MIT",
-  "homepage": "https://github.com/adaptive-shield-matrix/cf-b2",
+  "homepage": "https://github.com/adaptive-shield-matrix/cfb2",
   "description": "A lightweight Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through the Bandwidth Alliance.",
   "keywords": [
     "cloudflare-workers",
@@ -55,6 +55,6 @@
     "zero-bandwidth-cost"
   ],
   "repository": {
-    "url": "git+https://github.com/adaptive-shield-matrix/cf-b2.git"
+    "url": "git+https://github.com/adaptive-shield-matrix/cfb2.git"
   }
 }
