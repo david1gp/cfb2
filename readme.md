@@ -1,4 +1,4 @@
-# @adaptive-sm/cfb2 - 🚀 Zero-Cost B2 Object Storage Cloudflare Proxy
+# @adaptive-ds/cfb2 - 🚀 Zero-Cost B2 Object Storage Cloudflare Proxy
 
 A clever Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through using the Cloudflare Network of the Bandwidth Alliance.
 
@@ -11,8 +11,8 @@ Stop paying for outbound bandwidth and start serving your media files smarter, n
 
 Quick Links
 
-- code - https://github.com/adaptive-shield-matrix/storage-proxy
-- npm - https://www.npmjs.com/package/@adaptive-sm/storage-proxy
+- code - https://github.com/david1gp/cfb2
+- npm - https://www.npmjs.com/package/@adaptive-ds/cfb2
 - cloudflare bandwidth alliance - https://www.cloudflare.com/bandwidth-alliance/
 
 ## Features
@@ -99,7 +99,7 @@ The Worker uses environment variables for configuration:
 5. **Monitor**:
 
    ```
-   wrangler tail adaptive-storage-proxy
+   wrangler tail adaptive-cfb2
    ```
 
 ## Environment Setup

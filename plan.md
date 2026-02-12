@@ -35,7 +35,7 @@ Additional
 - credetials should be loaded from .env file, keys: `​PEER_ACCOUNT`, `PEER_KEY`
 - always use `bun` instead of `npm`/`pnpm`
 - Import aliases:
-  `utils` -> `node_modules/@adaptive-sm/utils/`
+  `utils` -> `node_modules/@adaptive-ds/utils/`
 - use `Result` type from `~utils/result/Result` to model return valules that can fail, like fetch calls
 - validate all `fetch` return values and requests` with valibot
 - use `wrangler.jsonc` to allow configuring multiple domains

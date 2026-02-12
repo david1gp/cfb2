@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     // Environment setup & latest features
-    "lib": [
-      "ESNext",
-      "WebWorker"
-    ],
+    "lib": ["ESNext", "WebWorker"],
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
@@ -16,10 +13,7 @@
     "noEmit": true,
     "resolveJsonModule": true,
     // Cloudflare Worker types
-    "types": [
-      "@cloudflare/workers-types/latest",
-      "bun"
-    ],
+    "types": ["@cloudflare/workers-types/latest", "bun"],
     //
     // performance
     //
@@ -28,15 +22,9 @@
     // absolute import paths
     //
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@client/*": [
-        "./client/*"
-      ],
-      "~utils/*": [
-        "./node_modules/@adaptive-sm/utils/dist/*"
-      ]
+      "@/*": ["./src/*"],
+      "@client/*": ["./client/*"],
+      "~utils/*": ["./node_modules/@adaptive-ds/utils/dist/*"],
     },
     //
     // https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/#the---erasablesyntaxonly-option
@@ -55,16 +43,6 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
   },
-  "include": [
-    "./client",
-    "./ops",
-    "./src",
-    "./test"
-  ],
-  "exclude": [
-    ".wrangler",
-    "dist",
-    "docs",
-    "ops"
-  ]
+  "include": ["./client", "./ops", "./src", "./test"],
+  "exclude": [".wrangler", "dist", "docs", "ops"],
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@adaptive-sm/cfb2",
+  "name": "@adaptive-ds/cfb2",
   "version": "0.1.0",
   "scripts": {
     "dev": "wrangler dev --config ./wrangler.jsonc",
@@ -10,7 +10,7 @@
     "test:w": "bun test --env-file=.env --preload ./test/setup.ts --watch"
   },
   "dependencies": {
-    "@adaptive-sm/utils": "link:@adaptive-sm/utils",
+    "@adaptive-ds/utils": "link:@adaptive-ds/utils",
     "@hono/standard-validator": "^0.2.2",
     "@hono/swagger-ui": "^0.5.3",
     "@valibot/to-json-schema": "^1.5.0",
@@ -39,7 +39,7 @@
   "type": "module",
   "private": false,
   "license": "MIT",
-  "homepage": "https://github.com/adaptive-shield-matrix/cfb2",
+  "homepage": "https://github.com/david1gp/cfb2",
   "description": "A lightweight Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through the Bandwidth Alliance.",
   "keywords": [
     "cloudflare-workers",
@@ -55,6 +55,6 @@
     "zero-bandwidth-cost"
   ],
   "repository": {
-    "url": "git+https://github.com/adaptive-shield-matrix/cfb2.git"
+    "url": "git+https://github.com/david1gp/cfb2.git"
   }
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "my-storage-proxy",
+  "name": "cfb2",
   "main": "index.ts",
   "workers_dev": false,
   "compatibility_date": "2025-11-17",
@@ -11,12 +11,12 @@
   "vars": {
     "B2_BUCKET_PUBLIC_BASE_URL": "https://your-default-bucket.s3.region.backblazeb2.com",
     "HEADER_CORS_ALLOW_ORIGIN": "*",
-    "HEADER_CORS_MAX_AGE": "300"
+    "HEADER_CORS_MAX_AGE": "300",
   },
 
   // Enable observability for debugging and monitoring
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
 
   // Environment-specific configurations for different projects
@@ -26,15 +26,15 @@
       "vars": {
         "B2_BUCKET_PUBLIC_BASE_URL": "https://your-production-bucket.s3.region.backblazeb2.com",
         "HEADER_CORS_ALLOW_ORIGIN": "https://yourdomain.com, https://www.yourdomain.com",
-        "HEADER_CORS_MAX_AGE": "86400"
+        "HEADER_CORS_MAX_AGE": "86400",
       },
       "routes": [
         {
           "pattern": "cdn.yourdomain.com",
           "zone_name": "yourdomain.com",
-          "custom_domain": true
-        }
-      ]
+          "custom_domain": true,
+        },
+      ],
     },
 
     // Development environment - relaxed settings for testing
@@ -42,17 +42,17 @@
       "vars": {
         "B2_BUCKET_PUBLIC_BASE_URL": "https://your-dev-bucket.s3.region.backblazeb2.com",
         "HEADER_CORS_ALLOW_ORIGIN": "*",
-        "HEADER_CORS_MAX_AGE": "0"
+        "HEADER_CORS_MAX_AGE": "0",
       },
       "routes": [
         {
           "pattern": "dev-storage.yourdomain.com",
           "zone_name": "yourdomain.com",
-          "custom_domain": true
-        }
-      ]
-    }
-  }
+          "custom_domain": true,
+        },
+      ],
+    },
+  },
 }
 
 /*
@@ -66,7 +66,7 @@ wrangler deploy --env dev
 bun run ops/deploy.ts
 
 # Monitor specific environment
-wrangler tail my-storage-proxy --env production
+wrangler tail cfb2 --env production
 
 CONFIGURATION NOTES:
 
