@@ -1,22 +1,25 @@
 {
   "compilerOptions": {
     // Environment setup & latest features
-    "lib": ["ESNext", "WebWorker"],
+    "lib": [
+      "ESNext",
+      "WebWorker"
+    ],
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
     "allowJs": true,
-
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
     "resolveJsonModule": true,
-
     // Cloudflare Worker types
-    "types": ["@cloudflare/workers-types/latest", "bun"],
-
+    "types": [
+      "@cloudflare/workers-types/latest",
+      "bun"
+    ],
     //
     // performance
     //
@@ -27,6 +30,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@client/*": [
+        "./client/*"
       ],
       "~utils/*": [
         "./node_modules/@adaptive-sm/utils/dist/*"
@@ -50,9 +56,10 @@
     "noImplicitOverride": true,
   },
   "include": [
+    "./client",
+    "./ops",
     "./src",
-    "./test",
-    "./tests"
+    "./test"
   ],
   "exclude": [
     ".wrangler",

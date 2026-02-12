@@ -91,4 +91,5 @@ astro
 /AGENTS.md
 
 # Project
-#/wrangler.jsonc
+/wrangler.jsonc
+/.*.vars

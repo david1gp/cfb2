@@ -1,0 +1,19 @@
+# _headers file for Cloudflare Pages
+# Documentation: https://developers.cloudflare.com/pages/configuration/headers/
+# Syntax based on Netlify: https://docs.netlify.com/routing/headers/
+
+# Cache-Control headers for static files from /public/ folder
+#
+# 604800 seconds = 1 week
+
+/favicon.ico
+  Cache-Control: public, max-age=604800, immutable
+
+/logo.svg
+  Cache-Control: public, max-age=604800, immutable
+
+/site.webmanifest
+  Cache-Control: public, max-age=604800, immutable
+
+/logo/*
+  Cache-Control: public, max-age=604800, immutable

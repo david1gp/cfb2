@@ -1,6 +1,6 @@
-# @adaptive-sm/cf-b2 - 🚀 Zero-Cost B2 Object Storage Cloudflare Proxy
+# @adaptive-sm/cfb2 - 🚀 Zero-Cost B2 Object Storage Cloudflare Proxy
 
-A clever Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through the Bandwidth Alliance.
+A clever Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through using the Cloudflare Network of the Bandwidth Alliance.
 
 - **Zero bandwidth costs** – leverage Cloudflare's Bandwidth Alliance with Backblaze B2 for free outbound traffic.
 - **Lightning fast** – runs on Cloudflare's global edge network with automatic CDN capabilities.
@@ -62,9 +62,9 @@ Each environment can point to different B2 buckets with customized CORS and cach
 
 The Worker uses environment variables for configuration:
 
-- `PUBLIC_BUCKET_BASE_URL`: Your Backblaze B2 bucket public URL
-- `CORS_ALLOW_ORIGIN`: Comma-separated list of allowed origins (default: "*")
-- `CORS_MAX_AGE`: CORS max-age header value (default: "300")
+- `B2_BUCKET_PUBLIC_BASE_URL`: Your Backblaze B2 bucket public URL
+- `HEADER_CORS_ALLOW_ORIGIN`: Comma-separated list of allowed origins (default: "*")
+- `HEADER_CORS_MAX_AGE`: CORS max-age header value (default: "300")
 
 ## Deployment to Cloudflare Workers
 

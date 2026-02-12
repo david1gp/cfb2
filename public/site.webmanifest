@@ -1,0 +1,26 @@
+{
+  "name": "CFB2",
+  "short_name": "CFB2",
+  "icons": [
+    {
+      "src": "/logo/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logo/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#fff6d5",
+  "background_color": "#fff6d5",
+  "display": "standalone"
+}

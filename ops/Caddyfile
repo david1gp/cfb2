@@ -1,0 +1,7 @@
+cfb2.dev, cfb2.com {
+	import shared_config_simple
+	header {
+		Routed "cfb2"
+	}
+	reverse_proxy localhost:8702
+}

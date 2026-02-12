@@ -1,4 +1,3 @@
-
 export function parseAllowedOrigins(corsAllowOrigin?: string): string[] {
   if (!corsAllowOrigin) {
     return ["*"]
