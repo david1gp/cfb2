@@ -1,7 +1,7 @@
 import { b2ApiAuthorizeAccount } from "@/b2/api/b2ApiAuthorizeAccount"
 import { b2AuthSchema, type B2AuthModel } from "@/b2/model/B2AuthModel"
 import type { Env } from "@/env/Env"
-import { envB2AccountResult } from "@/env/envB2AccountResult"
+import { envB2KeyIdResult } from "@/env/envB2AccountResult"
 import { envB2KeyResult } from "@/env/envB2KeyResult"
 import { envEnvNameResult } from "@/env/envEnvNameResult"
 import dayjs from "dayjs"
@@ -18,7 +18,7 @@ export async function b2AuthKvGetAndSave(env: Env): PromiseResult<B2AuthModel> {
   const cachedAuth = await b2AuthKvLoad(env, envName)
   if (cachedAuth) return createResult(cachedAuth)
 
-  const accountResult = envB2AccountResult(env)
+  const accountResult = envB2KeyIdResult(env)
   if (!accountResult.success) return accountResult
 
   const keyResult = envB2KeyResult(env)

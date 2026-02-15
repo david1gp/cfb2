@@ -1,5 +1,5 @@
 import type { Env } from "@/env/Env"
-import { envB2AccountResult } from "@/env/envB2AccountResult"
+import { envB2KeyIdResult } from "@/env/envB2AccountResult"
 import { envB2BucketPublicBaseUrlResult } from "@/env/envB2BucketPublicBaseUrlResult"
 import { envB2KeyResult } from "@/env/envB2KeyResult"
 import { envEnvNameResult } from "@/env/envEnvNameResult"
@@ -9,7 +9,7 @@ import { describe, expect, test } from "bun:test"
 describe("envVariable tests", () => {
   const env = process.env as unknown as Env
   test("envB2AccountResult", () => {
-    const result = envB2AccountResult(env)
+    const result = envB2KeyIdResult(env)
     if (!result.success) console.log(result)
     expect(result.success).toBe(true)
   })
