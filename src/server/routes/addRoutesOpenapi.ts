@@ -91,7 +91,7 @@ Stop paying for outbound bandwidth and start serving your media files smarter, n
 
 export function addRoutesOpenapiSwagger(app: HonoApp) {
   app.get(
-    "/ui",
+    "/",
     describeRoute({
       description: "Swagger UI documentation interface",
       tags: ["openapi"],
