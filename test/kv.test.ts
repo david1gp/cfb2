@@ -6,8 +6,6 @@ import { apiKvGet } from "@client/apiKvGet"
 import { apiKvList } from "@client/apiKvList"
 import { apiKvPost } from "@client/apiKvPost"
 import { afterAll, beforeAll, describe, expect, test } from "bun:test"
-import * as fs from "fs"
-import * as path from "path"
 import { workerUrl } from "./workerUrl"
 
 function generateTestKey(prefix: string): string {
@@ -22,20 +20,7 @@ describe("KV API", () => {
   const testKeys: string[] = []
 
   beforeAll(async () => {
-    const envPath = path.resolve(process.cwd(), ".env")
-    if (fs.existsSync(envPath)) {
-      const envContent = fs.readFileSync(envPath, "utf-8")
-      envContent.split("\n").forEach((line) => {
-        const trimmedLine = line.trim()
-        if (trimmedLine && !trimmedLine.startsWith("#")) {
-          const [key, ...valueParts] = trimmedLine.split("=")
-          if (key && valueParts.length > 0) {
-            process.env[key.trim()] = valueParts.join("=").trim()
-          }
-        }
-      })
-    }
-    const tokenSecretResult = envTokenSecretResult(env)
+    const tokenSecretResult = envTokenSecretResult(process.env as unknown as Env)
     if (tokenSecretResult.success) {
       token = await createToken("test-user-id", tokenSecretResult.data)
     } else {
