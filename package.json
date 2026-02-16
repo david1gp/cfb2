@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "wrangler dev --config ./wrangler.jsonc",
     "build": "tsc",
-    "build:lib": "tsc -p ./tsconfig.lib.json",
+    "build:lib": "bun run build:client",
+    "build:client": "tsc -p ./tsconfig.client.json",
+    "cors": "bun ./src/cors/bucketCors.ts",
     "deploy": "bun run ops/deploy.ts",
     "test": "bun test --env-file=.env --preload ./test/setup.ts",
     "test:w": "bun test --env-file=.env --preload ./test/setup.ts --watch"

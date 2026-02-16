@@ -5,12 +5,14 @@ export interface B2AuthModel extends B2MetaTimes {
   apiUrl: string
   bucketId: string
   authorizationToken: string
+  accountId: string
 }
 
 export const b2AuthSchema = a.object({
   apiUrl: a.string(),
   bucketId: a.string(),
   authorizationToken: a.string(),
+  accountId: a.string(),
   ...b2MetaSchemaFields,
 })
 

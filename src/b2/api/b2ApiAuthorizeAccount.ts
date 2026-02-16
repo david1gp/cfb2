@@ -72,6 +72,7 @@ export async function b2ApiAuthorizeAccount(keyId: string, applicationKey: strin
     apiUrl: data.apiUrl,
     authorizationToken: data.authorizationToken,
     bucketId: data.allowed.bucketId,
+    accountId: data.accountId,
     createdAt,
     expiresAt,
   }
