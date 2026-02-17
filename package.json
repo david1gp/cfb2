@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "wrangler dev --config ./wrangler.jsonc",
-    "build": "tsc",
-    "build:lib": "bun run build:client",
-    "build:client": "tsc -p ./tsconfig.client.json",
+    "build": "tsc -p ./tsconfig.client.json",
     "cors": "bun ./src/cors/bucketCors.ts",
     "deploy": "bun run ops/deploy.ts",
     "test": "bun test --env-file=.env --preload ./test/setup.ts",
@@ -58,5 +56,11 @@
   ],
   "repository": {
     "url": "git+https://github.com/david1gp/cfb2.git"
-  }
+  },
+  "exports": {
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist"
+  ]
 }
