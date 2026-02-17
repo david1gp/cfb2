@@ -6,6 +6,7 @@
     "build": "tsc -p ./tsconfig.client.json",
     "cors": "bun ./src/cors/bucketCors.ts",
     "deploy": "bun run ops/deploy.ts",
+    "release": "bash ./ops/release.sh",
     "test": "bun test --env-file=.env --preload ./test/setup.ts",
     "test:w": "bun test --env-file=.env --preload ./test/setup.ts --watch"
   },
