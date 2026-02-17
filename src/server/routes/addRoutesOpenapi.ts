@@ -121,7 +121,6 @@ export function addRoutesOpenapiSwagger(app: HonoApp) {
 
   <!-- Icons -->
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/logo/logo-32.png">
   <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Crawlers -->
