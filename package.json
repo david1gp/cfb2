@@ -9,27 +9,30 @@
     "test": "bun test --env-file=.env --preload ./test/setup.ts",
     "test:w": "bun test --env-file=.env --preload ./test/setup.ts --watch"
   },
-  "dependencies": {
-    "@adaptive-ds/utils": "link:@adaptive-ds/utils",
+  "peerDependencies": {
+    "@adaptive-ds/utils": "^0.7.0",
+    "dayjs": "^1.11.19",
+    "jose": "^6.1.3",
+    "jwt-decode": "^4.0.0",
+    "typescript": "^5",
+    "valibot": "^1.2.0"
+  },
+  "devDependencies": {
+    "@adaptive-ds/utils": "^0.7.0",
+    "@biomejs/biome": "^2.3.13",
+    "@cloudflare/workers-types": "^4.20260129.0",
     "@hono/standard-validator": "^0.2.2",
     "@hono/swagger-ui": "^0.5.3",
+    "@types/bun": "^1.3.7",
     "@valibot/to-json-schema": "^1.5.0",
     "dayjs": "^1.11.19",
     "hono": "^4.11.7",
     "hono-openapi": "^1.2.0",
     "jose": "^6.1.3",
     "jwt-decode": "^4.0.0",
-    "valibot": "^1.2.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.3.13",
-    "@cloudflare/workers-types": "^4.20260129.0",
-    "@types/bun": "^1.3.7",
     "prettier": "^3.8.1",
+    "valibot": "^1.2.0",
     "wrangler": "^4.61.1"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
   },
   "prettier": {
     "semi": false,
