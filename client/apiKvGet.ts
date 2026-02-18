@@ -1,4 +1,4 @@
-import { apiPathKv } from "@client/apiBaseKv"
+import { apiPathKv } from "./apiBaseKv"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
 

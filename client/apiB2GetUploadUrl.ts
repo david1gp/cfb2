@@ -1,5 +1,5 @@
-import { apiPathB2 } from "@client/apiBaseB2"
-import { b2GetUploadUrlResponseSchema } from "@client/b2GetUploadUrlResponseSchema"
+import { apiPathB2 } from "./apiBaseB2"
+import { b2GetUploadUrlResponseSchema } from "./b2GetUploadUrlResponseSchema"
 import * as a from "valibot"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"

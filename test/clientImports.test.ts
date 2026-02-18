@@ -24,6 +24,7 @@ async function getAllTsFiles(dir: string): Promise<string[]> {
 
 const RELATIVE_IMPORT_RE = /^import\s+.*?\s+from\s+['"](\.\.[\\/])/gm
 const ABSOLUTE_SRC_IMPORT_RE = /^import\s+.*?\s+from\s+['"]@\\/gm
+const ABSOLUTE_CLIENT_IMPORT_RE = /^import\s+.*?\s+from\s+['"]@client/gm
 
 test("client dir must not import from @ (src) or relative paths outside client", async () => {
   const files = await getAllTsFiles(CLIENT_DIR)
@@ -63,10 +64,20 @@ test("client dir must not import from @ (src) or relative paths outside client",
       })
       match = absoluteRegex.exec(content)
     }
+
+    const clientImportRegex = /^import\s+.*?\s+from\s+['"]@client/gm
+    match = clientImportRegex.exec(content)
+    while (match !== null) {
+      violations.push({
+        file: relativeFile,
+        import: match[0],
+      })
+      match = clientImportRegex.exec(content)
+    }
   }
 
   if (violations.length > 0) {
-    console.error("Client files cannot import from @ (src) or relative paths outside client folder:")
+    console.error("Client files cannot import from @ (src), @client, or relative paths outside client folder:")
     for (const v of violations) {
       console.error(`  ${v.file}: ${v.import}`)
     }
@@ -84,6 +95,10 @@ const EXAMPLES_INVALID_ABSOLUTE = [
   `import { qux } from "@/components/Button"`,
 ]
 
+const EXAMPLES_INVALID_CLIENT = [
+  `import { bar } from "@client/apiBaseB2"`,
+]
+
 test("regex correctly identifies invalid relative .. imports (negative test)", () => {
   for (const example of EXAMPLES_INVALID_RELATIVE) {
     const relativeRegex = /import\s+.*?\s+from\s+['"](\.\.[^'"]+)/g
@@ -99,6 +114,14 @@ test("regex correctly identifies invalid absolute @ imports (negative test)", ()
   for (const example of EXAMPLES_INVALID_ABSOLUTE) {
     const absoluteRegex = /import\s+.*?\s+from\s+['"]@\//g
     const match = absoluteRegex.exec(example)
+    expect(match).not.toBeNull()
+  }
+})
+
+test("regex correctly identifies invalid @client imports (negative test)", () => {
+  for (const example of EXAMPLES_INVALID_CLIENT) {
+    const clientRegex = /import\s+.*?\s+from\s+['"]@client/g
+    const match = clientRegex.exec(example)
     expect(match).not.toBeNull()
   }
 })

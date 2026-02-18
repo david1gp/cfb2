@@ -1,5 +1,5 @@
-import type { B2ApiUploadData } from "@client/apiB2GetUploadUrl"
-import type { B2ApiUploadFileProps } from "@client/B2ApiUploadFileProps"
+import type { B2ApiUploadData } from "./apiB2GetUploadUrl"
+import type { B2ApiUploadFileProps } from "./B2ApiUploadFileProps"
 import * as a from "valibot"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"

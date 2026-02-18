@@ -1,4 +1,4 @@
-import { apiPathB2 } from "@client/apiBaseB2"
+import { apiPathB2 } from "./apiBaseB2"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 
 export const apiPathIsOnline = "/health"
