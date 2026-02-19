@@ -62,30 +62,6 @@ Stop paying for outbound bandwidth and start serving your media files smarter, n
     openAPIRouteHandler(app, openApiOptions),
   )
 
-  app.get(
-    "/doc",
-    describeRoute({
-      description: "Get OpenAPI specification (redirect)",
-      tags: ["openapi"],
-      security: [],
-      responses: {
-        200: {
-          description: "OpenAPI JSON specification",
-          content: {
-            "application/json": { schema: resolver(a.string()) },
-          },
-        },
-        401: {
-          description: "Unauthorized",
-          content: {
-            "application/json": { schema: resolver(resultErrSchema) },
-          },
-        },
-      },
-    }),
-    openAPIRouteHandler(app, openApiOptions),
-  )
-
   addRoutesOpenapiSwagger(app)
 }
 
@@ -134,7 +110,7 @@ export function addRoutesOpenapiSwagger(app: HonoApp) {
   <script src="https://unpkg.com/swagger-ui-dist@5.31.0/swagger-ui-bundle.js"></script>
   <script>
     SwaggerUIBundle({
-      url: "/doc",
+      url: "/openapi",
       dom_id: "#swagger-ui",
       deepLinking: true,
       presets: [
