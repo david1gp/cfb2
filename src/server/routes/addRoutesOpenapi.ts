@@ -8,7 +8,7 @@ export function addRoutesOpenapi(app: HonoApp) {
   const openApiOptions = {
     documentation: {
       info: {
-        title: "@adaptive-ds/cfb2 - Zero-Cost B2 Object Storage Cloudflare Proxy",
+        title: "@adaptive-ds/cfb2",
         version: packageVersion,
         description: `A clever Cloudflare Worker that eliminates Backblaze B2 outbound bandwidth costs through the Bandwidth Alliance.
 
