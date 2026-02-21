@@ -1,8 +1,8 @@
 {
   "name": "@adaptive-ds/cfb2",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "scripts": {
-    "dev": "wrangler dev --config ./wrangler.jsonc",
+    "dev": "wrangler dev --config ./wrangler.jsonc --env dcc_dev",
     "build": "tsc -p ./tsconfig.client.json",
     "cors": "bun ./src/cors/bucketCors.ts",
     "deploy": "bun run ops/deploy.ts",
