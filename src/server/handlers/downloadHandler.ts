@@ -1,8 +1,7 @@
-import type { HonoContext } from "@/utils/HonoContext"
 import { envB2BucketPublicBaseUrlResult } from "@/env/envB2BucketPublicBaseUrlResult"
 import { envHeaderCacheControlResult } from "@/env/envHeaderCacheControlResult"
-import { envHeaderCorsAllowOriginResult } from "@/env/envHeaderCorsAllowOriginResult"
-import { envHeaderCorsMaxAgeResult } from "@/env/envHeaderCorsMaxAgeResult"
+import { getCorsHeaders } from "@/server/headers/getCorsHeaders"
+import type { HonoContext } from "@/utils/HonoContext"
 
 export async function downloadHandler(c: HonoContext): Promise<Response> {
   const op = "downloadHandler"
@@ -38,19 +37,15 @@ export async function downloadHandler(c: HonoContext): Promise<Response> {
 
   // Apply cache & CORS from env
   const cacheControlResult = envHeaderCacheControlResult(c.env)
-  const cacheControl = cacheControlResult.success ? cacheControlResult.data.trim() : "public, max-age=86400, stale-while-revalidate=259200, immutable"
-  headers.set("Cache-Control", cacheControl)
-
-  const corsOriginResult = envHeaderCorsAllowOriginResult(c.env)
-  const corsOrigin = corsOriginResult.success ? corsOriginResult.data.trim() : "*"
-  headers.set("Access-Control-Allow-Origin", corsOrigin)
-
-  if (corsOrigin !== "*") {
-    headers.set("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS")
-    const corsMaxAgeResult = envHeaderCorsMaxAgeResult(c.env)
-    const corsMaxAge = corsMaxAgeResult.success ? corsMaxAgeResult.data.trim() : "86400"
-    headers.set("Access-Control-Max-Age", corsMaxAge)
+  const cacheControl = cacheControlResult.success ? cacheControlResult.data.trim() : ""
+  if (cacheControl) {
+    headers.set("Cache-Control", cacheControl)
   }
+
+  const corsHeaders = getCorsHeaders(c.env, c.req.raw)
+  corsHeaders.forEach((value, key) => {
+    headers.set(key, value)
+  })
 
   headers.set("X-Content-Type-Options", "nosniff")
 
