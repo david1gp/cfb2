@@ -1,4 +1,5 @@
 import type { B2AuthModel } from "@/b2/model/B2AuthModel"
+import { enableLogging } from "@/config/enableLogging"
 import dayjs from "dayjs"
 import * as a from "valibot"
 import { createError, createResult, createResultError, type PromiseResult } from "~utils/result/Result"
@@ -34,7 +35,8 @@ const log = true
  */
 export async function b2ApiAuthorizeAccount(keyId: string, applicationKey: string): PromiseResult<B2AuthModel> {
   const op = "b2ApiAuthorizeAccount"
-  console.log(op, keyId, applicationKey)
+  if (enableLogging) console.log(">>>", op, "START")
+  if (enableLogging) console.log(op, "keyId:", keyId)
   const credentials = "Basic " + btoa(`${keyId}:${applicationKey}`)
   // "Basic " + Buffer.from(keyId + ":" + applicationKey).toString("base64"),
   const authResponse = await fetch("https://api.backblazeb2.com/b2api/v2/b2_authorize_account", {
@@ -43,22 +45,26 @@ export async function b2ApiAuthorizeAccount(keyId: string, applicationKey: strin
     },
   })
   const fetched = await authResponse.text()
-  if (log) console.log(op, "fetched:", fetched)
+  if (enableLogging) console.log(op, "response status:", authResponse.status, authResponse.statusText)
+  if (enableLogging) console.log(op, "response:", fetched)
 
   if (!authResponse.ok) {
     // return createError(op, "api error", fetched)
     const schema = a.pipe(a.string(), a.parseJson(), b2ApiErrSchema)
     const parse = a.safeParse(schema, fetched)
     if (!parse.success) {
+      console.error(op, "error parsing error response:", fetched)
       return createError(op, "api error", fetched)
     }
+    console.error(op, "B2 API error:", parse.output.code, parse.output.message)
     return createError(op, parse.output.code, fetched)
   }
 
   const schema = a.pipe(a.string(), a.parseJson(), b2ApiAuthSchema)
   const parsing = a.safeParse(schema, fetched)
-  if (log) console.log(op, "parsed:", parsing)
+  if (enableLogging) console.log(op, "parsed:", parsing)
   if (!parsing.success) {
+    console.error(op, "parse error:", a.summarize(parsing.issues))
     return createResultError(op, a.summarize(parsing.issues), fetched)
   }
   const data = parsing.output
@@ -76,5 +82,6 @@ export async function b2ApiAuthorizeAccount(keyId: string, applicationKey: strin
     createdAt,
     expiresAt,
   }
+  if (enableLogging) console.log(op, "SUCCESS")
   return createResult(auth)
 }

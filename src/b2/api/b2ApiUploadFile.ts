@@ -1,5 +1,6 @@
 import type { B2UrlModel } from "@/b2/model/B2UrlModel"
 import type { B2ApiUploadFileProps } from "@client/B2ApiUploadFileProps"
+import { enableLogging } from "@/config/enableLogging"
 import * as a from "valibot"
 import { createResult, createResultError, type PromiseResult } from "~utils/result/Result"
 
@@ -24,11 +25,16 @@ export async function b2ApiUploadFile(
   info: B2ApiUploadFileProps,
   body: any,
 ): PromiseResult<B2UploadFileType> {
-  const op = "b2UploadFile"
+  const op = "b2ApiUploadFile"
+  if (enableLogging) console.log(">>>", op, "START")
+  if (enableLogging) console.log(op, "fullFileName:", info.fullFileName)
+  if (enableLogging) console.log(op, "mimeType:", info.mimeType)
+  if (enableLogging) console.log(op, "contentLength:", info.contentLength)
+  if (enableLogging) console.log(op, "sha1:", info.sha1)
 
   // const url = `${auth.apiUrl}/b2api/v2/b2_get_upload_url` + uploadFileUrl
   const url = uploadUrlData.uploadUrl
-  if (log) console.log(op, "url:", url)
+  if (enableLogging) console.log(op, "url:", url)
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -38,24 +44,26 @@ export async function b2ApiUploadFile(
       "Content-Length": info.contentLength,
       "X-Bz-Content-Sha1": info.sha1,
     },
-    body,
   })
 
+  if (enableLogging) console.log(op, "response status:", response.status, response.statusText)
   if (!response.ok) {
     const errorText = await response.text()
-    console.error(op, response.status, response.statusText, errorText)
+    console.error(op, "error response:", response.status, response.statusText, errorText)
     return createResultError(op, `Upload failed: ${response.status}`, errorText)
   }
 
   const responseText = await response.text()
-  if (log) console.log(op, "uploaded:", responseText)
+  if (enableLogging) console.log(op, "uploaded response:", responseText)
   const schema = a.pipe(a.string(), a.parseJson(), b2UploadFileSchema)
   const parsing = a.safeParse(schema, responseText)
-  if (log) console.log(op, "parsed:", parsing)
+  if (enableLogging) console.log(op, "parsed:", parsing)
 
   if (!parsing.success) {
+    console.error(op, "parse error:", a.summarize(parsing.issues))
     return createResultError(op, a.summarize(parsing.issues), responseText)
   }
 
+  if (enableLogging) console.log(op, "SUCCESS")
   return createResult(parsing.output)
 }

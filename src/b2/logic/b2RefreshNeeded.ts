@@ -1,3 +1,4 @@
+import { enableLogging } from "@/config/enableLogging"
 import dayjs from "dayjs"
 import type { Result } from "~utils/result/Result"
 
@@ -6,6 +7,6 @@ export function b2RefreshNeeded<T extends { expiresAt: string }>(cached: Result<
   if (!cached.success) return true
   const expiresAt = dayjs(cached.data.expiresAt)
   const isBeforeNow = expiresAt.isBefore(dayjs())
-  console.log(op, { expiresAt, isBeforeNow })
+  if (enableLogging) console.log(op, { expiresAt, isBeforeNow })
   return isBeforeNow
 }

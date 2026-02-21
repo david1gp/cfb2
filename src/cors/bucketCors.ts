@@ -1,5 +1,6 @@
 import config from "../../wrangler.jsonc"
 import { b2ApiAuthorizeAccount } from "@/b2/api/b2ApiAuthorizeAccount"
+import { enableLogging } from "@/config/enableLogging"
 import { createResult, createResultError, type PromiseResult } from "~utils/result/Result"
 
 const log = true
@@ -43,7 +44,7 @@ async function b2ApiUpdateBucket(
   })
 
   const fetched = await response.text()
-  if (log) console.log(op, "fetched:", fetched)
+  if (enableLogging) console.log(op, "fetched:", fetched)
 
   if (!response.ok) {
     return createResultError(op, "API error", fetched)
@@ -70,7 +71,7 @@ function getEnvConfig(envName: string) {
 
 export async function bucketCors(envName: string, allowedDomain: string): PromiseResult<B2BucketResponse> {
   const op = "bucketCors"
-  console.log(op, envName, allowedDomain)
+  if (enableLogging) console.log(op, envName, allowedDomain)
 
   const envConfig = getEnvConfig(envName)
   if (!envConfig) {
@@ -105,7 +106,7 @@ export async function bucketCors(envName: string, allowedDomain: string): Promis
     return createResultError(op, "Failed to update bucket CORS", updateResult.errorMessage)
   }
 
-  console.log(op, "success", updateResult.data)
+  if (enableLogging) console.log(op, "success", updateResult.data)
   return createResult(updateResult.data)
 }
 

@@ -1,4 +1,5 @@
 import type { B2UrlModel } from "@/b2/model/B2UrlModel"
+import { enableLogging } from "@/config/enableLogging"
 import * as a from "valibot"
 import { createResult, createResultError, type PromiseResult } from "~utils/result/Result"
 
@@ -33,7 +34,7 @@ export async function b2ApiUploadContent(
   const op = "b2UploadContent"
 
   const url = uploadUrlData.uploadUrl
-  if (log) console.log(op, "url:", url)
+  if (enableLogging) console.log(op, "url:", url)
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -53,10 +54,10 @@ export async function b2ApiUploadContent(
   }
 
   const responseText = await response.text()
-  if (log) console.log(op, "uploaded:", responseText)
+  if (enableLogging) console.log(op, "uploaded:", responseText)
   const schema = a.pipe(a.string(), a.parseJson(), b2UploadFileSchema)
   const parsing = a.safeParse(schema, responseText)
-  if (log) console.log(op, "parsed:", parsing)
+  if (enableLogging) console.log(op, "parsed:", parsing)
 
   if (!parsing.success) {
     return createResultError(op, a.summarize(parsing.issues), responseText)

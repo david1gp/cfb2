@@ -15,5 +15,5 @@ export interface Env {
   HEADER_CORS_ALLOW_ORIGIN?: string
   HEADER_CORS_MAX_AGE?: string
   // bindings
-  KV: KVNamespace
+  cfb2: KVNamespace
 }
