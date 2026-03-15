@@ -1,9 +1,9 @@
 import { verifyToken } from "@/auth/jwt_token/verifyToken"
+import type { Env } from "@/env/Env"
 import { envKVResult } from "@/env/envKVResult"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
-import type { Env } from "@/env/Env"
 import type { HonoContext } from "@/utils/HonoContext"
-import { createResultError } from "~utils/result/Result"
+import { createResultError } from "~result"
 
 export async function kvHandler(c: HonoContext): Promise<Response> {
   const method = c.req.method
@@ -33,7 +33,7 @@ export async function kvHandler(c: HonoContext): Promise<Response> {
   return c.json(createResultError("kvHandler", "Method not allowed"), 405)
 }
 
-async function kvListHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise<Response> {
+async function kvListHandler(c: HonoContext, kv: NonNullable<Env["cfb2"]>): Promise<Response> {
   const tokenValidation = await validateToken(c, "kvListHandler")
   if (!tokenValidation.valid) return tokenValidation.error!
 
@@ -44,7 +44,7 @@ async function kvListHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promis
   return c.json(keys, 200)
 }
 
-async function kvGetHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise<Response> {
+async function kvGetHandler(c: HonoContext, kv: NonNullable<Env["cfb2"]>): Promise<Response> {
   const tokenValidation = await validateToken(c, "kvGetHandler")
   if (!tokenValidation.valid) return tokenValidation.error!
 
@@ -61,7 +61,7 @@ async function kvGetHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise
   })
 }
 
-async function kvPostHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise<Response> {
+async function kvPostHandler(c: HonoContext, kv: NonNullable<Env["cfb2"]>): Promise<Response> {
   const tokenValidation = await validateToken(c, "kvPostHandler")
   if (!tokenValidation.valid) return tokenValidation.error!
 
@@ -86,7 +86,7 @@ async function kvPostHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promis
   })
 }
 
-async function kvDeleteHandler(c: HonoContext, kv: NonNullable<Env["KV"]>): Promise<Response> {
+async function kvDeleteHandler(c: HonoContext, kv: NonNullable<Env["cfb2"]>): Promise<Response> {
   const tokenValidation = await validateToken(c, "kvDeleteHandler")
   if (!tokenValidation.valid) return tokenValidation.error!
 

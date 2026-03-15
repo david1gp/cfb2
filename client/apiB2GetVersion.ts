@@ -1,4 +1,4 @@
-import { createError, createResult, type PromiseResult } from "~utils/result/Result"
+import { createError, createResult, type PromiseResult } from "~result"
 
 export const apiPathVersion = "/version"
 

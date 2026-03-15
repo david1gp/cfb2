@@ -4,7 +4,7 @@ import { apiPathKv } from "@client/apiBaseKv"
 import { kvListResponseSchema } from "@client/apiKvList"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
-import { resultErrSchema } from "~utils/result/resultErrSchema"
+import { resultErrSchema } from "~result/resultErrSchema"
 
 export function addRoutesKv(app: HonoApp) {
   app.get(

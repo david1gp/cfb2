@@ -1,8 +1,8 @@
 import { apiPathB2 } from "./apiBaseB2"
 import type { B2ApiUploadFileProps } from "./B2ApiUploadFileProps"
 import * as a from "valibot"
-import { createError, createResult, type PromiseResult } from "~utils/result/Result"
-import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
+import { createError, createResult, type PromiseResult } from "~result"
+import { resultTryParsingFetchErr } from "~result/resultTryParsingFetchErr"
 import { b2UploadResultSchema, type B2UploadResult } from "./b2UploadResultSchema"
 
 export const apiPathUploadFile = "/upload"

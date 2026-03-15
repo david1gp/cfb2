@@ -1,6 +1,6 @@
 import { apiPathKv } from "./apiBaseKv"
-import { createError, createResult, type PromiseResult } from "~utils/result/Result"
-import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
+import { createError, createResult, type PromiseResult } from "~result"
+import { resultTryParsingFetchErr } from "~result/resultTryParsingFetchErr"
 
 export async function apiKvGet(baseUrl: string, key: string, token: string): PromiseResult<string | null> {
   const op = "apiKvGet"

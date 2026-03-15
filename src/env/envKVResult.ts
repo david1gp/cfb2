@@ -1,12 +1,12 @@
 import type { Env } from "@/env/Env"
 import { envVariableErrorMessage } from "@/env/envVariableErrorMessage"
 import { privateEnvVariableName } from "@/env/privateEnvVariableName"
-import { createResult, createResultError, type Result } from "~utils/result/Result"
+import { createResult, createResultError, type Result } from "~result"
 
-export function envKVResult(env: Env): Result<Env["KV"]> {
+export function envKVResult(env: Env): Result<Env["cfb2"]> {
   const op = "envKVResult"
   const name = privateEnvVariableName.KV
-  const value = env.KV
+  const value = env.cfb2
   if (!value) {
     const errorMessage = envVariableErrorMessage(name)
     return createResultError(op, errorMessage)

@@ -3,7 +3,7 @@ import { tokenValidDurationInDays } from "@/auth/jwt_token/tokenValidDurationInD
 import { enableLogging } from "@/config/enableLogging"
 import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import type { Env } from "@/env/Env"
-import { createError, createResult, type PromiseResult } from "~utils/result/Result"
+import { createError, createResult, type PromiseResult } from "~result"
 
 export async function createTokenResult(userId: string, env: Env): PromiseResult<string> {
   const expiresInDays = tokenValidDurationInDays

@@ -1,6 +1,6 @@
 import { pipe, safeParse, string, type BaseSchema, type BaseIssue } from "valibot"
-import type { Result } from "~utils/result/Result"
-import { createError, createResult } from "~utils/result/Result"
+import type { Result } from "~result"
+import { createError, createResult } from "~result"
 
 export async function fetchResult<T>(
   op: string,

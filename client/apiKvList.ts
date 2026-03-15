@@ -1,6 +1,6 @@
 import * as a from "valibot"
-import { createError, createResult, type PromiseResult } from "~utils/result/Result"
-import { resultTryParsingFetchErr } from "~utils/result/resultTryParsingFetchErr"
+import { createError, createResult, type PromiseResult } from "~result"
+import { resultTryParsingFetchErr } from "~result/resultTryParsingFetchErr"
 import { apiPathKv } from "./apiBaseKv"
 
 export type ApiKvListResult = string[]

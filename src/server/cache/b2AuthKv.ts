@@ -7,7 +7,7 @@ import { envB2KeyResult } from "@/env/envB2KeyResult"
 import { envEnvNameResult } from "@/env/envEnvNameResult"
 import dayjs from "dayjs"
 import * as a from "valibot"
-import { createResult, type PromiseResult } from "~utils/result/Result"
+import { createResult, type PromiseResult } from "~result"
 
 export async function b2AuthKvGetAndSave(env: Env): PromiseResult<B2AuthModel> {
   const op = "b2AuthKvGetAndSave"

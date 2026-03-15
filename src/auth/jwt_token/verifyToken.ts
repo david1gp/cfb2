@@ -1,7 +1,7 @@
 import { decodedTokenSchema, type DecodedToken } from "@/auth/jwt_token/DecodedToken"
 import { jwtVerify } from "jose"
 import * as a from "valibot"
-import { createResult, createResultError, type PromiseResult } from "~utils/result/Result"
+import { createResult, createResultError, type PromiseResult } from "~result"
 
 export async function verifyToken(token: string, secret: string | undefined): PromiseResult<DecodedToken> {
   const op = "verifyToken"

@@ -6,7 +6,7 @@ import { envTokenSecretResult } from "@/env/envTokenSecretResult"
 import { b2AuthKvGetAndSave } from "@/server/cache/b2AuthKv"
 import type { HonoContext } from "@/utils/HonoContext"
 import { uploadHeaderFields } from "@client/apiB2UploadViaWorker"
-import { createResultError } from "~utils/result/Result"
+import { createResultError } from "~result"
 
 export async function uploadFileHandler(c: HonoContext): Promise<Response> {
   const op = "uploadFileHandler"

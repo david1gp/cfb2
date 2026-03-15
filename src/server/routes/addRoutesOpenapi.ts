@@ -2,7 +2,7 @@ import { packageVersion } from "@/env/packageVersion"
 import type { HonoApp } from "@/utils/HonoApp"
 import { describeRoute, openAPIRouteHandler, resolver } from "hono-openapi"
 import * as a from "valibot"
-import { resultErrSchema } from "~utils/result/resultErrSchema"
+import { resultErrSchema } from "~result/resultErrSchema"
 
 export function addRoutesOpenapi(app: HonoApp) {
   const openApiOptions = {

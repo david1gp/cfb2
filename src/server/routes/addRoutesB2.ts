@@ -8,7 +8,7 @@ import { b2GetUploadUrlResponseSchema } from "@client/b2GetUploadUrlResponseSche
 import { b2UploadResultSchema } from "@client/b2UploadResultSchema"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
-import { resultErrSchema } from "~utils/result/resultErrSchema"
+import { resultErrSchema } from "~result/resultErrSchema"
 import { downloadHandler } from "../handlers/downloadHandler"
 
 export function addRoutesB2(app: HonoApp) {

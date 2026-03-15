@@ -3,7 +3,7 @@ import type { B2UrlModel } from "@/b2/model/B2UrlModel"
 import { enableLogging } from "@/config/enableLogging"
 import dayjs from "dayjs"
 import * as a from "valibot"
-import { createResult, createResultError, type PromiseResult } from "~utils/result/Result"
+import { createResult, createResultError, type PromiseResult } from "~result"
 
 const b2UploadFields = {
   // bucketId: v.string(),

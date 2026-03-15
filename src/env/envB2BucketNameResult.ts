@@ -1,7 +1,7 @@
 import type { Env } from "@/env/Env"
 import { envVariableErrorMessage } from "@/env/envVariableErrorMessage"
 import { privateEnvVariableName } from "@/env/privateEnvVariableName"
-import { createResult, createResultError, type Result } from "~utils/result/Result"
+import { createResult, createResultError, type Result } from "~result"
 
 export function envB2BucketNameResult(env: Env): Result<string> {
   const op = "envB2BucketNameResult"

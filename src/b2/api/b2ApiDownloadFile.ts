@@ -1,5 +1,5 @@
 import { enableLogging } from "@/config/enableLogging"
-import { createResult, createResultError, type PromiseResult } from "~utils/result/Result"
+import { createResult, createResultError, type PromiseResult } from "~result"
 
 const log = true
 

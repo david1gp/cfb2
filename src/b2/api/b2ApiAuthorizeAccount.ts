@@ -2,7 +2,7 @@ import type { B2AuthModel } from "@/b2/model/B2AuthModel"
 import { enableLogging } from "@/config/enableLogging"
 import dayjs from "dayjs"
 import * as a from "valibot"
-import { createError, createResult, createResultError, type PromiseResult } from "~utils/result/Result"
+import { createError, createResult, createResultError, type PromiseResult } from "~result"
 import { intSchema, intSchemaMin0 } from "~utils/valibot/intSchema"
 
 const b2ApiFields = {
