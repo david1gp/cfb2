@@ -1,4 +1,4 @@
-import { apiB2GetVersion } from "@client/apiB2GetVersion"
+import { apiB2GetVersion } from "../client/apiB2GetVersion"
 import { expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 

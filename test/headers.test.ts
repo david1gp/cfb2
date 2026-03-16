@@ -1,8 +1,8 @@
-import { createToken } from "@/auth/jwt_token/createToken"
-import type { Env } from "@/env/Env"
-import { envTokenSecretResult } from "@/env/envTokenSecretResult"
-import { apiPathGetUploadUrl } from "@client/apiB2GetUploadUrl"
-import { apiPathB2 } from "@client/apiBaseB2"
+import { createToken } from "../src/auth/jwt_token/createToken"
+import type { Env } from "../src/env/Env"
+import { envTokenSecretResult } from "../src/env/envTokenSecretResult"
+import { apiPathGetUploadUrl } from "../client/apiB2GetUploadUrl"
+import { apiPathB2 } from "../client/apiBaseB2"
 import { describe, expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 

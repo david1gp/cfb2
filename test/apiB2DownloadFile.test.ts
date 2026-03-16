@@ -1,4 +1,4 @@
-import { apiB2DownloadFile } from "@client/apiB2DownloadFile"
+import { apiB2DownloadFile } from "../client/apiB2DownloadFile"
 import { describe, expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 

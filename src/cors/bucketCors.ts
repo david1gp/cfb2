@@ -1,7 +1,7 @@
 import config from "../../wrangler.jsonc"
-import { b2ApiAuthorizeAccount } from "@/b2/api/b2ApiAuthorizeAccount"
-import { enableLogging } from "@/config/enableLogging"
-import { createResult, createResultError, type PromiseResult } from "~result"
+import { b2ApiAuthorizeAccount } from "../b2/api/b2ApiAuthorizeAccount"
+import { enableLogging } from "../config/enableLogging"
+import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 
 const log = true
 

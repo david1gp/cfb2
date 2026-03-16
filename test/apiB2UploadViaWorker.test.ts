@@ -1,8 +1,8 @@
-import { createToken } from "@/auth/jwt_token/createToken"
-import { envTokenSecretResult } from "@/env/envTokenSecretResult"
-import type { Env } from "@/env/Env"
-import { calculateSHA1FromUint8Array } from "@/utils/sha1"
-import { apiB2UploadViaWorker } from "@client/apiB2UploadViaWorker"
+import { createToken } from "../src/auth/jwt_token/createToken"
+import { envTokenSecretResult } from "../src/env/envTokenSecretResult"
+import type { Env } from "../src/env/Env"
+import { calculateSHA1FromUint8Array } from "../src/utils/sha1"
+import { apiB2UploadViaWorker } from "../client/apiB2UploadViaWorker"
 import { describe, expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 

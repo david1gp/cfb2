@@ -1,4 +1,4 @@
-import { apiB2IsOnline } from "@client/apiB2IsOnline"
+import { apiB2IsOnline } from "../client/apiB2IsOnline"
 import { expect, test } from "bun:test"
 import { workerUrl } from "./workerUrl"
 

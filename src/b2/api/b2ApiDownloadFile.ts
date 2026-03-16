@@ -1,5 +1,5 @@
-import { enableLogging } from "@/config/enableLogging"
-import { createResult, createResultError, type PromiseResult } from "~result"
+import { enableLogging } from "../../config/enableLogging"
+import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 
 const log = true
 

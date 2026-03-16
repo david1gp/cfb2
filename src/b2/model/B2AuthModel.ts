@@ -1,4 +1,4 @@
-import { type B2MetaTimes, b2MetaSchemaFields } from "@/b2/model/B2MetaTimes"
+import { type B2MetaTimes, b2MetaSchemaFields } from "./B2MetaTimes"
 import * as a from "valibot"
 
 export interface B2AuthModel extends B2MetaTimes {

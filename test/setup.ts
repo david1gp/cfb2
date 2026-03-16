@@ -1,5 +1,5 @@
-import { serverPort } from "@/utils/serverPort"
-import { apiPathIsOnline } from "@client/apiB2IsOnline"
+import { serverPort } from "../src/utils/serverPort"
+import { apiPathIsOnline } from "../client/apiB2IsOnline"
 import { afterAll, beforeAll } from "bun:test"
 import { spawn, type ChildProcess } from "node:child_process"
 

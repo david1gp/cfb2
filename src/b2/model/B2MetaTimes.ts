@@ -1,4 +1,4 @@
-import { dateTimeSchema } from "~utils/valibot/dateTimeSchema"
+import { dateTimeSchema } from "@adaptive-ds/utils/valibot/dateTimeSchema.js"
 
 export type B2MetaTimes = {
   createdAt: string

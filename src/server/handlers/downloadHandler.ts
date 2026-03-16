@@ -1,7 +1,7 @@
-import { envB2BucketPublicBaseUrlResult } from "@/env/envB2BucketPublicBaseUrlResult"
-import { envHeaderCacheControlResult } from "@/env/envHeaderCacheControlResult"
-import { getCorsHeaders } from "@/server/headers/getCorsHeaders"
-import type { HonoContext } from "@/utils/HonoContext"
+import { envB2BucketPublicBaseUrlResult } from "../../env/envB2BucketPublicBaseUrlResult"
+import { envHeaderCacheControlResult } from "../../env/envHeaderCacheControlResult"
+import { getCorsHeaders } from "../headers/getCorsHeaders"
+import type { HonoContext } from "../../utils/HonoContext"
 
 export async function downloadHandler(c: HonoContext): Promise<Response> {
   const op = "downloadHandler"

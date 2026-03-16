@@ -1,8 +1,8 @@
-import type { B2UrlModel } from "@/b2/model/B2UrlModel"
-import type { B2ApiUploadFileProps } from "@client/B2ApiUploadFileProps"
-import { enableLogging } from "@/config/enableLogging"
+import type { B2UrlModel } from "../model/B2UrlModel"
+import type { B2ApiUploadFileProps } from "../../../client/B2ApiUploadFileProps"
+import { enableLogging } from "../../config/enableLogging"
 import * as a from "valibot"
-import { createResult, createResultError, type PromiseResult } from "~result"
+import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 
 export type B2UploadFileType = a.InferOutput<typeof b2UploadFileSchema>
 

@@ -1,10 +1,10 @@
-import { verifyToken } from "@/auth/jwt_token/verifyToken"
-import { b2ApiGetUploadUrl } from "@/b2/api/b2ApiGetUploadUrl"
-import { envTokenSecretResult } from "@/env/envTokenSecretResult"
-import { b2AuthKvGetAndSave } from "@/server/cache/b2AuthKv"
-import type { HonoContext } from "@/utils/HonoContext"
-import type { B2ApiUploadData } from "@client/apiB2GetUploadUrl"
-import { createResultError } from "~result"
+import { verifyToken } from "../../auth/jwt_token/verifyToken"
+import { b2ApiGetUploadUrl } from "../../b2/api/b2ApiGetUploadUrl"
+import { envTokenSecretResult } from "../../env/envTokenSecretResult"
+import { b2AuthKvGetAndSave } from "../cache/b2AuthKv"
+import type { HonoContext } from "../../utils/HonoContext"
+import type { B2ApiUploadData } from "../../../client/apiB2GetUploadUrl"
+import { createResultError } from "@adaptive-ds/result"
 
 export async function getUploadUrlHandler(c: HonoContext): Promise<Response> {
   let authHeader = c.req.header("Authorization")

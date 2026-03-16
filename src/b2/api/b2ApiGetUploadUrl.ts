@@ -1,9 +1,9 @@
-import type { B2AuthModel } from "@/b2/model/B2AuthModel"
-import type { B2UrlModel } from "@/b2/model/B2UrlModel"
-import { enableLogging } from "@/config/enableLogging"
+import type { B2AuthModel } from "../model/B2AuthModel"
+import type { B2UrlModel } from "../model/B2UrlModel"
+import { enableLogging } from "../../config/enableLogging"
 import dayjs from "dayjs"
 import * as a from "valibot"
-import { createResult, createResultError, type PromiseResult } from "~result"
+import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 
 const b2UploadFields = {
   // bucketId: v.string(),

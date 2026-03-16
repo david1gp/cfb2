@@ -25,26 +25,6 @@
     //
     "skipLibCheck": true,
     //
-    // absolute import paths
-    //
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@client/*": [
-        "./client/*"
-      ],
-      "~utils/*": [
-        "./node_modules/@adaptive-ds/utils/dist/*"
-      ],
-      "~result": [
-        "./node_modules/@adaptive-ds/result/dist/index.d.ts"
-      ],
-      "~result/*": [
-        "./node_modules/@adaptive-ds/result/dist/*.d.ts"
-      ]
-    },
-    //
     // https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/#the---erasablesyntaxonly-option
     //
     "erasableSyntaxOnly": true,

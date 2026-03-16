@@ -1,6 +1,6 @@
 import { pipe, safeParse, string, type BaseSchema, type BaseIssue } from "valibot"
-import type { Result } from "~result"
-import { createError, createResult } from "~result"
+import type { Result } from "@adaptive-ds/result"
+import { createError, createResult } from "@adaptive-ds/result"
 
 export async function fetchResult<T>(
   op: string,

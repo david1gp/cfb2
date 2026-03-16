@@ -1,5 +1,5 @@
-import { type Env } from "@/env/Env"
-import { uploadHeaderFields } from "@client/apiB2UploadViaWorker"
+import { type Env } from "../../env/Env"
+import { uploadHeaderFields } from "../../../client/apiB2UploadViaWorker"
 import { getOriginFromRequest } from "./getOriginFromRequest"
 import { parseAllowedOrigins } from "./parseAllowedOrigins"
 

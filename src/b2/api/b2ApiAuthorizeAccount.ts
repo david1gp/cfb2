@@ -1,9 +1,9 @@
-import type { B2AuthModel } from "@/b2/model/B2AuthModel"
-import { enableLogging } from "@/config/enableLogging"
+import { createError, createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
+import { intSchema, intSchemaMin0 } from "@adaptive-ds/utils/valibot/intSchema.js"
 import dayjs from "dayjs"
 import * as a from "valibot"
-import { createError, createResult, createResultError, type PromiseResult } from "~result"
-import { intSchema, intSchemaMin0 } from "~utils/valibot/intSchema"
+import { enableLogging } from "../../config/enableLogging"
+import type { B2AuthModel } from "../model/B2AuthModel"
 
 const b2ApiFields = {
   absoluteMinimumPartSize: intSchema,

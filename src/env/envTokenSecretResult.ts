@@ -1,7 +1,7 @@
-import type { Env } from "@/env/Env"
-import { envVariableErrorMessage } from "@/env/envVariableErrorMessage"
-import { privateEnvVariableName } from "@/env/privateEnvVariableName"
-import { createResult, createResultError, type Result } from "~result"
+import type { Env } from "./Env"
+import { envVariableErrorMessage } from "./envVariableErrorMessage"
+import { privateEnvVariableName } from "./privateEnvVariableName"
+import { createResult, createResultError, type Result } from "@adaptive-ds/result"
 
 export function envTokenSecretResult(env: Env): Result<string> {
   const op = "envTokenSecretResult"

@@ -1,9 +1,9 @@
-import { createToken } from "@/auth/jwt_token/createToken"
-import { tokenValidDurationInDays } from "@/auth/jwt_token/tokenValidDurationInDays"
-import { enableLogging } from "@/config/enableLogging"
-import { envTokenSecretResult } from "@/env/envTokenSecretResult"
-import type { Env } from "@/env/Env"
-import { createError, createResult, type PromiseResult } from "~result"
+import { createToken } from "./createToken"
+import { tokenValidDurationInDays } from "./tokenValidDurationInDays"
+import { enableLogging } from "../../config/enableLogging"
+import { envTokenSecretResult } from "../../env/envTokenSecretResult"
+import type { Env } from "../../env/Env"
+import { createError, createResult, type PromiseResult } from "@adaptive-ds/result"
 
 export async function createTokenResult(userId: string, env: Env): PromiseResult<string> {
   const expiresInDays = tokenValidDurationInDays

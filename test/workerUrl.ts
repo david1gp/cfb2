@@ -1,3 +1,3 @@
-import { serverPort } from "@/utils/serverPort"
+import { serverPort } from "../src/utils/serverPort"
 
 export const workerUrl = "http://localhost:" + serverPort
