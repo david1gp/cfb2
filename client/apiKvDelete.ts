@@ -1,5 +1,4 @@
-import { createError, createResult, type PromiseResult } from "~result"
-import { resultTryParsingFetchErr } from "~result/resultTryParsingFetchErr"
+import { createError, createResult, resultTryParsingFetchErr, type PromiseResult } from "@adaptive-ds/result"
 import { apiPathKv } from "./apiBaseKv"
 
 export async function apiKvDelete(baseUrl: string, key: string, token: string): PromiseResult<null> {

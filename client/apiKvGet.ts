@@ -1,6 +1,5 @@
+import { createError, createResult, resultTryParsingFetchErr, type PromiseResult } from "@adaptive-ds/result"
 import { apiPathKv } from "./apiBaseKv"
-import { createError, createResult, type PromiseResult } from "~result"
-import { resultTryParsingFetchErr } from "~result/resultTryParsingFetchErr"
 
 export async function apiKvGet(baseUrl: string, key: string, token: string): PromiseResult<string | null> {
   const op = "apiKvGet"

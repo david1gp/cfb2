@@ -1,4 +1,4 @@
-import { createError, createResult, type PromiseResult } from "~result"
+import { createError, createResult, type PromiseResult } from "@adaptive-ds/result"
 
 export const apiPathVersion = "/version"
 
