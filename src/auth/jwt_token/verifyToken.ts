@@ -1,4 +1,4 @@
-import { decodedTokenSchema, type DecodedToken } from "./DecodedToken"
+import { decodedTokenSchema, type DecodedToken } from "./DecodedToken.js"
 import { jwtVerify } from "jose"
 import * as a from "valibot"
 import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"

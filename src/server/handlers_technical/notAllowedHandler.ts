@@ -1,4 +1,4 @@
-import type { HonoContext } from "../../utils/HonoContext"
+import type { HonoContext } from "../../utils/HonoContext.js"
 
 export async function notAllowedHandler(c: HonoContext): Promise<Response> {
   return c.text("Method not allowed", 405, {

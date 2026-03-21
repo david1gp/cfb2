@@ -1,9 +1,9 @@
-import { verifyToken } from "../../auth/jwt_token/verifyToken"
-import { b2ApiGetUploadUrl } from "../../b2/api/b2ApiGetUploadUrl"
-import { envTokenSecretResult } from "../../env/envTokenSecretResult"
-import { b2AuthKvGetAndSave } from "../cache/b2AuthKv"
-import type { HonoContext } from "../../utils/HonoContext"
-import type { B2ApiUploadData } from "../../../client/apiB2GetUploadUrl"
+import { verifyToken } from "../../auth/jwt_token/verifyToken.js"
+import { b2ApiGetUploadUrl } from "../../b2/api/b2ApiGetUploadUrl.js"
+import { envTokenSecretResult } from "../../env/envTokenSecretResult.js"
+import { b2AuthKvGetAndSave } from "../cache/b2AuthKv.js"
+import type { HonoContext } from "../../utils/HonoContext.js"
+import type { B2ApiUploadData } from "../../../client/apiB2GetUploadUrl.js"
 import { createResultError } from "@adaptive-ds/result"
 
 export async function getUploadUrlHandler(c: HonoContext): Promise<Response> {

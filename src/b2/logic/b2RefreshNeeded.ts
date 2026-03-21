@@ -1,4 +1,4 @@
-import { enableLogging } from "../../config/enableLogging"
+import { enableLogging } from "../../config/enableLogging.js"
 import dayjs from "dayjs"
 import type { Result } from "@adaptive-ds/result"
 

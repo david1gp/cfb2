@@ -1,8 +1,8 @@
-import { verifyToken } from "../../auth/jwt_token/verifyToken"
-import type { Env } from "../../env/Env"
-import { envKVResult } from "../../env/envKVResult"
-import { envTokenSecretResult } from "../../env/envTokenSecretResult"
-import type { HonoContext } from "../../utils/HonoContext"
+import { verifyToken } from "../../auth/jwt_token/verifyToken.js"
+import type { Env } from "../../env/Env.js"
+import { envKVResult } from "../../env/envKVResult.js"
+import { envTokenSecretResult } from "../../env/envTokenSecretResult.js"
+import type { HonoContext } from "../../utils/HonoContext.js"
 import { createResultError } from "@adaptive-ds/result"
 
 export async function kvHandler(c: HonoContext): Promise<Response> {

@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
-import { packageVersion } from "../src/env/packageVersion"
-import { getEnvTargets } from "./getEnvTargets"
+import { packageVersion } from "../src/env/packageVersion.js"
+import { getEnvTargets } from "./getEnvTargets.js"
 
 // Run the function if script is executed directly
 // @ts-ignore

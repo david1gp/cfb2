@@ -1,10 +1,10 @@
-import { createToken } from "../src/auth/jwt_token/createToken"
-import type { Env } from "../src/env/Env"
-import { envTokenSecretResult } from "../src/env/envTokenSecretResult"
-import { apiPathGetUploadUrl } from "../client/apiB2GetUploadUrl"
-import { apiPathB2 } from "../client/apiBaseB2"
+import { createToken } from "../src/auth/jwt_token/createToken.js"
+import type { Env } from "../src/env/Env.js"
+import { envTokenSecretResult } from "../src/env/envTokenSecretResult.js"
+import { apiPathGetUploadUrl } from "../client/apiB2GetUploadUrl.js"
+import { apiPathB2 } from "../client/apiBaseB2.js"
 import { describe, expect, test } from "bun:test"
-import { workerUrl } from "./workerUrl"
+import { workerUrl } from "./workerUrl.js"
 
 describe("apiB2GetUploadUrl", async () => {
   const env = process.env as unknown as Env

@@ -1,8 +1,8 @@
-import { createToken } from "./createToken"
-import { tokenValidDurationInDays } from "./tokenValidDurationInDays"
-import { enableLogging } from "../../config/enableLogging"
-import { envTokenSecretResult } from "../../env/envTokenSecretResult"
-import type { Env } from "../../env/Env"
+import { createToken } from "./createToken.js"
+import { tokenValidDurationInDays } from "./tokenValidDurationInDays.js"
+import { enableLogging } from "../../config/enableLogging.js"
+import { envTokenSecretResult } from "../../env/envTokenSecretResult.js"
+import type { Env } from "../../env/Env.js"
 import { createError, createResult, type PromiseResult } from "@adaptive-ds/result"
 
 export async function createTokenResult(userId: string, env: Env): PromiseResult<string> {

@@ -1,4 +1,4 @@
-import { type ServerTimingValues, setHeaderTiming } from "./setHeaderTiming"
+import { type ServerTimingValues, setHeaderTiming } from "./setHeaderTiming.js"
 
 export function setHeaderTimingSingleValue(
   r: Response,

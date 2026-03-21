@@ -1,4 +1,4 @@
-import { type B2MetaTimes, b2MetaSchemaFields } from "./B2MetaTimes"
+import { type B2MetaTimes, b2MetaSchemaFields } from "./B2MetaTimes.js"
 import * as a from "valibot"
 
 export interface B2UrlModel extends B2MetaTimes {

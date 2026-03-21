@@ -1,6 +1,6 @@
-import type { B2UrlModel } from "../model/B2UrlModel"
-import type { B2ApiUploadFileProps } from "../../../client/B2ApiUploadFileProps"
-import { enableLogging } from "../../config/enableLogging"
+import type { B2UrlModel } from "../model/B2UrlModel.js"
+import type { B2ApiUploadFileProps } from "../../../client/B2ApiUploadFileProps.js"
+import { enableLogging } from "../../config/enableLogging.js"
 import * as a from "valibot"
 import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 

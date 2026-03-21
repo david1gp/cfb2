@@ -1,5 +1,5 @@
-import type { Env } from "../../env/Env"
-import { getCorsHeaders } from "./getCorsHeaders"
+import type { Env } from "../../env/Env.js"
+import { getCorsHeaders } from "./getCorsHeaders.js"
 
 export function addCorsHeaders(response: Response, env: Env, request: Request): Response {
   const corsHeaders = getCorsHeaders(env, request)

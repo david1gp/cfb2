@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test"
-import { workerUrl } from "./workerUrl"
+import { workerUrl } from "./workerUrl.js"
 
 const BASE_URL = workerUrl
 

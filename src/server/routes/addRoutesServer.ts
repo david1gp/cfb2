@@ -1,8 +1,8 @@
-import { isOnlineHandler } from "../handlers_technical/isOnlineHandler"
-import { versionHandler } from "../handlers_technical/versionHandler"
-import type { HonoApp } from "../../utils/HonoApp"
-import { apiPathVersion } from "../../../client/apiB2GetVersion"
-import { apiPathIsOnline } from "../../../client/apiB2IsOnline"
+import { isOnlineHandler } from "../handlers_technical/isOnlineHandler.js"
+import { versionHandler } from "../handlers_technical/versionHandler.js"
+import type { HonoApp } from "../../utils/HonoApp.js"
+import { apiPathVersion } from "../../../client/apiB2GetVersion.js"
+import { apiPathIsOnline } from "../../../client/apiB2IsOnline.js"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
 

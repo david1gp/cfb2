@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import { apiB2DownloadFile } from "../client/apiB2DownloadFile"
-import { workerUrl } from "./workerUrl"
+import { apiB2DownloadFile } from "../client/apiB2DownloadFile.js"
+import { workerUrl } from "./workerUrl.js"
 
 describe("apiB2DownloadFile", () => {
   test("returns 200 for real B2 file", async () => {

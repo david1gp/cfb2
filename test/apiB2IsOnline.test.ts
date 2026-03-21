@@ -1,6 +1,6 @@
-import { apiB2IsOnline } from "../client/apiB2IsOnline"
+import { apiB2IsOnline } from "../client/apiB2IsOnline.js"
 import { expect, test } from "bun:test"
-import { workerUrl } from "./workerUrl"
+import { workerUrl } from "./workerUrl.js"
 
 test("apiB2IsOnline", async () => {
   const result = await apiB2IsOnline(workerUrl)

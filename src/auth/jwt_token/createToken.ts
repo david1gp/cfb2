@@ -1,5 +1,5 @@
 import { SignJWT } from "jose"
-import { tokenValidDurationInDays } from "./tokenValidDurationInDays"
+import { tokenValidDurationInDays } from "./tokenValidDurationInDays.js"
 
 export async function createToken(
   userId: string,

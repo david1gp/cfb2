@@ -1,6 +1,6 @@
 import config from "../../wrangler.jsonc"
-import { b2ApiAuthorizeAccount } from "../b2/api/b2ApiAuthorizeAccount"
-import { enableLogging } from "../config/enableLogging"
+import { b2ApiAuthorizeAccount } from "../b2/api/b2ApiAuthorizeAccount.js"
+import { enableLogging } from "../config/enableLogging.js"
 import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 
 const log = true
@@ -122,7 +122,7 @@ if (import.meta.main) {
   }
 
   bucketCors(envName, allowedDomain)
-    .then((result) => {
+    .then((result: Awaited<ReturnType<typeof bucketCors>>) => {
       if (result.success) {
         console.log("CORS rules updated successfully:", JSON.stringify(result.data.corsRules, null, 2))
       } else {
@@ -130,7 +130,7 @@ if (import.meta.main) {
         process.exit(1)
       }
     })
-    .catch((err) => {
+    .catch((err: unknown) => {
       console.error("Unexpected error:", err)
       process.exit(1)
     })

@@ -1,10 +1,10 @@
 import { resultErrSchema } from "@adaptive-ds/result"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
-import { apiPathKv } from "../../../client/apiBaseKv"
-import { kvListResponseSchema } from "../../../client/apiKvList"
-import type { HonoApp } from "../../utils/HonoApp"
-import { kvHandler } from "../handlers/kvHandler"
+import { apiPathKv } from "../../../client/apiBaseKv.js"
+import { kvListResponseSchema } from "../../../client/apiKvList.js"
+import type { HonoApp } from "../../utils/HonoApp.js"
+import { kvHandler } from "../handlers/kvHandler.js"
 
 export function addRoutesKv(app: HonoApp) {
   app.get(

@@ -1,9 +1,9 @@
-import type { Env } from "../src/env/Env"
-import { envB2KeyIdResult } from "../src/env/envB2AccountResult"
-import { envB2BucketPublicBaseUrlResult } from "../src/env/envB2BucketPublicBaseUrlResult"
-import { envB2KeyResult } from "../src/env/envB2KeyResult"
-import { envEnvNameResult } from "../src/env/envEnvNameResult"
-import { envTokenSecretResult } from "../src/env/envTokenSecretResult"
+import type { Env } from "../src/env/Env.js"
+import { envB2KeyIdResult } from "../src/env/envB2AccountResult.js"
+import { envB2BucketPublicBaseUrlResult } from "../src/env/envB2BucketPublicBaseUrlResult.js"
+import { envB2KeyResult } from "../src/env/envB2KeyResult.js"
+import { envEnvNameResult } from "../src/env/envEnvNameResult.js"
+import { envTokenSecretResult } from "../src/env/envTokenSecretResult.js"
 import { describe, expect, test } from "bun:test"
 
 describe("envVariable tests", () => {

@@ -1,6 +1,6 @@
-import { apiB2GetVersion } from "../client/apiB2GetVersion"
+import { apiB2GetVersion } from "../client/apiB2GetVersion.js"
 import { expect, test } from "bun:test"
-import { workerUrl } from "./workerUrl"
+import { workerUrl } from "./workerUrl.js"
 
 test("apiB2GetVersion", async () => {
   const result = await apiB2GetVersion(workerUrl)

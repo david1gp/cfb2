@@ -1,6 +1,6 @@
 import { createError, createResult, resultTryParsingFetchErr, type PromiseResult } from "@adaptive-ds/result"
 import * as a from "valibot"
-import { apiPathKv } from "./apiBaseKv"
+import { apiPathKv } from "./apiBaseKv.js"
 
 export type ApiKvListResult = string[]
 

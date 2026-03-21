@@ -1,4 +1,4 @@
-import type { HonoContext } from "../../utils/HonoContext"
+import type { HonoContext } from "../../utils/HonoContext.js"
 
 export async function isOnlineHandler(c: HonoContext): Promise<Response> {
   return c.text("OK", 200, {

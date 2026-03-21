@@ -1,4 +1,4 @@
-import { apiPathB2 } from "./apiBaseB2"
+import { apiPathB2 } from "./apiBaseB2.js"
 import { createError, createResult, type PromiseResult } from "@adaptive-ds/result"
 
 export const apiPathIsOnline = "/health"

@@ -1,8 +1,8 @@
 import { createError, createResult, resultTryParsingFetchErr, type PromiseResult } from "@adaptive-ds/result"
 import * as a from "valibot"
-import { apiPathB2 } from "./apiBaseB2"
-import type { B2ApiUploadFileProps } from "./B2ApiUploadFileProps"
-import { b2UploadResultSchema, type B2UploadResult } from "./b2UploadResultSchema"
+import { apiPathB2 } from "./apiBaseB2.js"
+import type { B2ApiUploadFileProps } from "./B2ApiUploadFileProps.js"
+import { b2UploadResultSchema, type B2UploadResult } from "./b2UploadResultSchema.js"
 
 export const apiPathUploadFile = "/upload"
 

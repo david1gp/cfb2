@@ -1,7 +1,7 @@
-import { type Env } from "../../env/Env"
-import { uploadHeaderFields } from "../../../client/apiB2UploadViaWorker"
-import { getOriginFromRequest } from "./getOriginFromRequest"
-import { parseAllowedOrigins } from "./parseAllowedOrigins"
+import { type Env } from "../../env/Env.js"
+import { uploadHeaderFields } from "../../../client/apiB2UploadViaWorker.js"
+import { getOriginFromRequest } from "./getOriginFromRequest.js"
+import { parseAllowedOrigins } from "./parseAllowedOrigins.js"
 
 const corsAllowedHeaders = ["Authorization", "If-Modified-Since", ...Object.values(uploadHeaderFields)].join(", ")
 

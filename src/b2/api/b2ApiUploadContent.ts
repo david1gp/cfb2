@@ -1,5 +1,5 @@
-import type { B2UrlModel } from "../model/B2UrlModel"
-import { enableLogging } from "../../config/enableLogging"
+import type { B2UrlModel } from "../model/B2UrlModel.js"
+import { enableLogging } from "../../config/enableLogging.js"
 import * as a from "valibot"
 import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 

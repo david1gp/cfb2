@@ -1,12 +1,12 @@
-import { createToken } from "../src/auth/jwt_token/createToken"
-import type { Env } from "../src/env/Env"
-import { envTokenSecretResult } from "../src/env/envTokenSecretResult"
-import { apiKvDelete } from "../client/apiKvDelete"
-import { apiKvGet } from "../client/apiKvGet"
-import { apiKvList } from "../client/apiKvList"
-import { apiKvPost } from "../client/apiKvPost"
+import { createToken } from "../src/auth/jwt_token/createToken.js"
+import type { Env } from "../src/env/Env.js"
+import { envTokenSecretResult } from "../src/env/envTokenSecretResult.js"
+import { apiKvDelete } from "../client/apiKvDelete.js"
+import { apiKvGet } from "../client/apiKvGet.js"
+import { apiKvList } from "../client/apiKvList.js"
+import { apiKvPost } from "../client/apiKvPost.js"
 import { afterAll, beforeAll, describe, expect, test } from "bun:test"
-import { workerUrl } from "./workerUrl"
+import { workerUrl } from "./workerUrl.js"
 
 function generateTestKey(prefix: string): string {
   const timestamp = Date.now()
