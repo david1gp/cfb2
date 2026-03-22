@@ -1,6 +1,6 @@
 {
   "name": "@adaptive-ds/cfb2",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "scripts": {
     "dev": "wrangler dev --config ./wrangler.jsonc --env dcc_dev",
     "build": "tsc -p ./tsconfig.client.json",
