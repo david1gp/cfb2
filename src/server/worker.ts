@@ -1,3 +1,4 @@
+import { Hono } from "hono"
 import { enableLogging } from "../config/enableLogging.js"
 import type { Env } from "../env/Env.js"
 import { notAllowedHandler } from "./handlers_technical/notAllowedHandler.js"
@@ -7,7 +8,6 @@ import { addRoutesB2 } from "./routes/addRoutesB2.js"
 import { addRoutesKv } from "./routes/addRoutesKv.js"
 import { addRoutesOpenapi } from "./routes/addRoutesOpenapi.js"
 import { addRoutesServer } from "./routes/addRoutesServer.js"
-import { Hono } from "hono"
 
 const app = new Hono<{ Bindings: Env }>()
 

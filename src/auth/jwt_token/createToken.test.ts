@@ -1,8 +1,8 @@
-import { decodedTokenSchema } from "./DecodedToken.js"
 import { expect, test } from "bun:test"
 import { jwtVerify, SignJWT } from "jose"
 import { jwtDecode } from "jwt-decode"
 import * as a from "valibot"
+import { decodedTokenSchema } from "./DecodedToken.js"
 
 async function createToken(uid: string, oid: string | null, secret: string, expiresInDays: number): Promise<string> {
   const encodedSecret = new TextEncoder().encode(secret)

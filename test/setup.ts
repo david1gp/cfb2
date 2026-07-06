@@ -1,7 +1,7 @@
-import { serverPort } from "../src/utils/serverPort.js"
-import { apiPathIsOnline } from "../client/apiB2IsOnline.js"
 import { afterAll, beforeAll } from "bun:test"
-import { spawn, type ChildProcess } from "node:child_process"
+import { type ChildProcess, spawn } from "node:child_process"
+import { apiPathIsOnline } from "../client/apiB2IsOnline.js"
+import { serverPort } from "../src/utils/serverPort.js"
 
 const BASE_URL = `http://localhost:${serverPort}`
 const HEALTH_URL = BASE_URL + apiPathIsOnline
@@ -12,7 +12,9 @@ let didStartServer = false
 
 async function isWranglerRunning(): Promise<boolean> {
   try {
-    const response = await fetch(HEALTH_URL, { signal: AbortSignal.timeout(1500) })
+    const response = await fetch(HEALTH_URL, {
+      signal: AbortSignal.timeout(1500),
+    })
     if (!response.ok) return false
 
     const text = await response.text()

@@ -1,4 +1,3 @@
-
 export async function apiB2DownloadFile(baseUrl: string, fullFileName: string): Promise<Response> {
   const op = "apiB2DownloadFile"
 

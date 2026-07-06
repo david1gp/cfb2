@@ -8,7 +8,8 @@
     "deploy": "bun run ops/deploy.ts",
     "release": "bash ./ops/release.sh",
     "test": "bun test --env-file=.env --preload ./test/setup.ts",
-    "test:w": "bun test --env-file=.env --preload ./test/setup.ts --watch"
+    "test:w": "bun test --env-file=.env --preload ./test/setup.ts --watch",
+    "format": "biome format --write client src test package.json tsconfig.json tsconfig.src.json tsconfig.client.json wrangler.jsonc biome.json"
   },
   "peerDependencies": {
     "@adaptive-ds/result": "^0.4.0",
@@ -19,7 +20,7 @@
     "valibot": "^1.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.7",
+    "@biomejs/biome": "^2.5.2",
     "@cloudflare/workers-types": "^4.20260316.1",
     "@hono/standard-validator": "^0.2.2",
     "@hono/swagger-ui": "^0.6.1",

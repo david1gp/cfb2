@@ -1,9 +1,9 @@
-import { createToken } from "../src/auth/jwt_token/createToken.js"
-import { envTokenSecretResult } from "../src/env/envTokenSecretResult.js"
-import type { Env } from "../src/env/Env.js"
-import { calculateSHA1FromUint8Array } from "../src/utils/sha1.js"
-import { apiB2UploadViaWorker } from "../client/apiB2UploadViaWorker.js"
 import { describe, expect, test } from "bun:test"
+import { apiB2UploadViaWorker } from "../client/apiB2UploadViaWorker.js"
+import { createToken } from "../src/auth/jwt_token/createToken.js"
+import type { Env } from "../src/env/Env.js"
+import { envTokenSecretResult } from "../src/env/envTokenSecretResult.js"
+import { calculateSHA1FromUint8Array } from "../src/utils/sha1.js"
 import { workerUrl } from "./workerUrl.js"
 
 describe("apiB2UploadViaWorker", async () => {

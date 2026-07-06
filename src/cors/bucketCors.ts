@@ -1,7 +1,7 @@
+import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 import config from "../../wrangler.jsonc"
 import { b2ApiAuthorizeAccount } from "../b2/api/b2ApiAuthorizeAccount.js"
 import { enableLogging } from "../config/enableLogging.js"
-import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 
 const log = true
 

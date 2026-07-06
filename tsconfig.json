@@ -9,14 +9,8 @@
     //
     // dom
     //
-    "lib": [
-      "ESNext",
-      "WebWorker"
-    ],
-    "types": [
-      "@cloudflare/workers-types/latest",
-      "bun"
-    ],
+    "lib": ["ESNext", "WebWorker"],
+    "types": ["@cloudflare/workers-types/latest", "bun"],
     //
     // performance
     //
@@ -53,12 +47,7 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "client",
-    "ops",
-    "src",
-    "test"
-  ],
+  "include": ["client", "ops", "src", "test"],
   "exclude": [
     ".github",
     ".roo",
@@ -75,5 +64,5 @@
     "public",
     "public-image-versions",
     "public-images"
-  ],
+  ]
 }

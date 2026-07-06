@@ -4,14 +4,6 @@
     "rootDir": "./src",
     "noEmit": true
   },
-  "include": [
-    "./client/**/*",
-    "./src/**/*",
-    "./test/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib"
-  ]
+  "include": ["./client/**/*", "./src/**/*", "./test/**/*"],
+  "exclude": ["node_modules", "dist", "lib"]
 }

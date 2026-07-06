@@ -1,5 +1,5 @@
-import { apiB2GetVersion } from "../client/apiB2GetVersion.js"
 import { expect, test } from "bun:test"
+import { apiB2GetVersion } from "../client/apiB2GetVersion.js"
 import { workerUrl } from "./workerUrl.js"
 
 test("apiB2GetVersion", async () => {

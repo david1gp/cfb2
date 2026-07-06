@@ -1,8 +1,8 @@
-import { createError, createResult, resultTryParsingFetchErr, type PromiseResult } from "@adaptive-ds/result"
+import { createError, createResult, type PromiseResult, resultTryParsingFetchErr } from "@adaptive-ds/result"
 import * as a from "valibot"
 import type { B2ApiUploadData } from "./apiB2GetUploadUrl.js"
 import type { B2ApiUploadFileProps } from "./B2ApiUploadFileProps.js"
-import { b2UploadResultSchema, type B2UploadResult } from "./b2UploadResultSchema.js"
+import { type B2UploadResult, b2UploadResultSchema } from "./b2UploadResultSchema.js"
 
 export interface UploadViaUrlParams extends B2ApiUploadData, B2ApiUploadFileProps {}
 

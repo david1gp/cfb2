@@ -1,5 +1,5 @@
-import { apiB2IsOnline } from "../client/apiB2IsOnline.js"
 import { expect, test } from "bun:test"
+import { apiB2IsOnline } from "../client/apiB2IsOnline.js"
 import { workerUrl } from "./workerUrl.js"
 
 test("apiB2IsOnline", async () => {

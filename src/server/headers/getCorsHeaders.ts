@@ -1,5 +1,5 @@
-import { type Env } from "../../env/Env.js"
 import { uploadHeaderFields } from "../../../client/apiB2UploadViaWorker.js"
+import type { Env } from "../../env/Env.js"
 import { getOriginFromRequest } from "./getOriginFromRequest.js"
 import { parseAllowedOrigins } from "./parseAllowedOrigins.js"
 

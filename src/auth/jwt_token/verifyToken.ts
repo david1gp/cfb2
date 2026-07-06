@@ -1,7 +1,7 @@
-import { decodedTokenSchema, type DecodedToken } from "./DecodedToken.js"
+import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
 import { jwtVerify } from "jose"
 import * as a from "valibot"
-import { createResult, createResultError, type PromiseResult } from "@adaptive-ds/result"
+import { type DecodedToken, decodedTokenSchema } from "./DecodedToken.js"
 
 export async function verifyToken(token: string, secret: string | undefined): PromiseResult<DecodedToken> {
   const op = "verifyToken"

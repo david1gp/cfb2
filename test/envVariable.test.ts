@@ -1,10 +1,10 @@
+import { describe, expect, test } from "bun:test"
 import type { Env } from "../src/env/Env.js"
 import { envB2KeyIdResult } from "../src/env/envB2AccountResult.js"
 import { envB2BucketPublicBaseUrlResult } from "../src/env/envB2BucketPublicBaseUrlResult.js"
 import { envB2KeyResult } from "../src/env/envB2KeyResult.js"
 import { envEnvNameResult } from "../src/env/envEnvNameResult.js"
 import { envTokenSecretResult } from "../src/env/envTokenSecretResult.js"
-import { describe, expect, test } from "bun:test"
 
 describe("envVariable tests", () => {
   const env = process.env as unknown as Env

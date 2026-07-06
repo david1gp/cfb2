@@ -22,7 +22,9 @@ export function addRoutesB2(app: HonoApp) {
         200: {
           description: "Upload URL and token",
           content: {
-            "application/json": { schema: resolver(b2GetUploadUrlResponseSchema) },
+            "application/json": {
+              schema: resolver(b2GetUploadUrlResponseSchema),
+            },
           },
         },
         401: {

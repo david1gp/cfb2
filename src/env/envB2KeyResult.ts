@@ -1,7 +1,7 @@
+import { createResult, createResultError, type Result } from "@adaptive-ds/result"
 import type { Env } from "./Env.js"
 import { envVariableErrorMessage } from "./envVariableErrorMessage.js"
 import { privateEnvVariableName } from "./privateEnvVariableName.js"
-import { createResult, createResultError, type Result } from "@adaptive-ds/result"
 
 export function envB2KeyResult(env: Env): Result<string> {
   const op = "envB2KeyResult"
