@@ -20,7 +20,7 @@
     "valibot": "^1.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.2",
+    "@biomejs/biome": "^2.6.4",
     "@cloudflare/workers-types": "^4.20260316.1",
     "@hono/standard-validator": "^0.2.2",
     "@hono/swagger-ui": "^0.6.1",
